@@ -22,7 +22,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="terminal" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="ts.external.directory.path" value="D:\Projekte\matraum_app\matraum-app\node_modules\typescript\lib" />
   </component>
   <component name="RunManager" selected="npm.Angular CLI Server">
     <configuration name="Tests (marschzeittabelle-webpage)" type="JavaScriptTestRunnerKarma">
@@ -63,6 +63,7 @@
       <option name="presentableId" value="Default" />
       <updated>1598275289060</updated>
       <workItem from="1598275290489" duration="328000" />
+      <workItem from="1598275632085" duration="2336000" />
     </task>
     <servers />
   </component>
@@ -73,6 +74,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="2685" y="382" key="#com.intellij.ide.util.MemberChooser" timestamp="1598275815988">
+      <screen x="1920" y="126" width="1920" height="1050" />
+    </state>
+    <state x="2685" y="382" key="#com.intellij.ide.util.MemberChooser/1920.126.1920.1050/0.0.1920.1170/-1920.126.1920.1080@1920.126.1920.1050" timestamp="1598275815988" />
     <state x="2660" y="407" key="FileChooserDialogImpl" timestamp="1598275327505">
       <screen x="1920" y="126" width="1920" height="1050" />
     </state>
