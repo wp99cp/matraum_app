@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5684a240-f99b-4178-a708-8ee1d2639d22" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectId" id="1gXyZk0ObQvSJNjgjxjsRGL7ecs" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="sortByType" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="terminal" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="RunManager" selected="npm.Angular CLI Server">
+    <configuration name="Tests (marschzeittabelle-webpage)" type="JavaScriptTestRunnerKarma">
+      <config-file value="$PROJECT_DIR$/karma.conf.js" />
+      <working-directory value="$PROJECT_DIR$" />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="E2E Tests (marschzeittabelle-webpage)" type="JavaScriptTestRunnerProtractor">
+      <config-file value="$PROJECT_DIR$/e2e/protractor.conf.js" />
+      <node-interpreter value="project" />
+      <protractor-options value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Angular Application" type="JavascriptDebugType" uri="http://localhost:4200">
+      <method v="2" />
+    </configuration>
+    <configuration name="Angular CLI Server" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="start" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5684a240-f99b-4178-a708-8ee1d2639d22" name="Default Changelist" comment="" />
+      <created>1598275289060</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1598275289060</updated>
+      <workItem from="1598275290489" duration="328000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TerminalProjectNonSharedOptionsProvider">
+    <option name="shellPath" value="&quot;C:\Users\pucyril\AppData\Local\Microsoft\WindowsApps\debian.exe&quot; run" />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2660" y="407" key="FileChooserDialogImpl" timestamp="1598275327505">
+      <screen x="1920" y="126" width="1920" height="1050" />
+    </state>
+    <state x="2660" y="407" key="FileChooserDialogImpl/1920.126.1920.1050/0.0.1920.1170/-1920.126.1920.1080@1920.126.1920.1050" timestamp="1598275327505" />
+    <state width="1899" height="295" key="GridCell.Tab.0.bottom" timestamp="1598275618331">
+      <screen x="1920" y="126" width="1920" height="1050" />
+    </state>
+    <state width="1899" height="295" key="GridCell.Tab.0.bottom/1920.126.1920.1050/0.0.1920.1170/-1920.126.1920.1080@1920.126.1920.1050" timestamp="1598275618331" />
+    <state width="1899" height="295" key="GridCell.Tab.0.center" timestamp="1598275618331">
+      <screen x="1920" y="126" width="1920" height="1050" />
+    </state>
+    <state width="1899" height="295" key="GridCell.Tab.0.center/1920.126.1920.1050/0.0.1920.1170/-1920.126.1920.1080@1920.126.1920.1050" timestamp="1598275618331" />
+    <state width="1899" height="295" key="GridCell.Tab.0.left" timestamp="1598275618331">
+      <screen x="1920" y="126" width="1920" height="1050" />
+    </state>
+    <state width="1899" height="295" key="GridCell.Tab.0.left/1920.126.1920.1050/0.0.1920.1170/-1920.126.1920.1080@1920.126.1920.1050" timestamp="1598275618331" />
+    <state width="1899" height="295" key="GridCell.Tab.0.right" timestamp="1598275618331">
+      <screen x="1920" y="126" width="1920" height="1050" />
+    </state>
+    <state width="1899" height="295" key="GridCell.Tab.0.right/1920.126.1920.1050/0.0.1920.1170/-1920.126.1920.1080@1920.126.1920.1050" timestamp="1598275618331" />
+    <state x="2381" y="311" key="SettingsEditor" timestamp="1598275344821">
+      <screen x="1920" y="126" width="1920" height="1050" />
+    </state>
+    <state x="2381" y="311" key="SettingsEditor/1920.126.1920.1050/0.0.1920.1170/-1920.126.1920.1080@1920.126.1920.1050" timestamp="1598275344821" />
+  </component>
+</project>
