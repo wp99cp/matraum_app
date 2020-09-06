@@ -51,7 +51,7 @@ jobs:
        name: deploy_dist
    
     - name: add git-ftp-args
-      run:  echo "!." > .git-ftp-include
+      run:  echo "!/deploy_dist/." > .git-ftp-include
          
     - name: Deploy 
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
@@ -59,4 +59,4 @@ jobs:
         ftp-server: ftp://ftp.zh11.ch/
         ftp-username: web364f3
         ftp-password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: /home/runner/work/matraum_app/matraum_app/deploy_dist/deploy_dist/matraum-app
+        local-dir: /home/runner/work/matraum_app/matraum_app/deploy_dist/deploy_dist
