@@ -59,4 +59,4 @@ jobs:
         ftp-server: ftp://ftp.zh11.ch/
         ftp-username: web364f3
         ftp-password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: /home/runner/work/matraum_app/matraum_app/deploy_dist/deploy_dist
+        local-dir: /home/runner/work/matraum_app/matraum_app/deploy_dist
