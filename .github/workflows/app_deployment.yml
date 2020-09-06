@@ -59,9 +59,8 @@ jobs:
          path: ''
          file: '.git-ftp-include'
          content: |
-            !*.js
-            !index.html 
-                   
+            !dist/*
+                               
     - name: add .git-ftp-ignore
       uses: 1arp/create-a-file-action@0.2
       with:
