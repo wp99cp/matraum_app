@@ -32,7 +32,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: deploy_dist
-          path: ./dist/matraum-app
+          path: ./matraum-app/dist/matraum-app
           
   # deploy the app via FTP
   FTP-Deploy-Action:
