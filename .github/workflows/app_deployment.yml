@@ -66,15 +66,15 @@ jobs:
         path: './'
         file: '.git-ftp-include'
         content: |
-            !*             
+            !index.html
+            !/dist           
                  
     - name: Show folders
       run: ls -R
                
     - name: Deploy 
-      uses: SamKirkland/FTP-Deploy-Action@2.0.0
-      env:
-        ftp_server: ftp://ftp.zh11.ch/
-        ftp_username: web364f3
-        ftp_password: ${{ secrets.FTP_PASSWORD }}
-        local_dir: ./dist
+      uses: SamKirkland/FTP-Deploy-Action@3.1.1
+      with:
+        ftp-server: ftp://ftp.zh11.ch/
+        ftp-username: web364f3
+        ftp-password: ${{ secrets.FTP_PASSWORD }}
