@@ -32,7 +32,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: deploy_dist
-          path: ./matraum-app/dist
+          path: ./dist/matraum-app
           
   # deploy the app via FTP
   FTP-Deploy-Action:
@@ -49,9 +49,11 @@ jobs:
       uses: actions/download-artifact@v1
       with:
        name: deploy_dist
+       path: ./build/dist
    
     - name: add git-ftp-args
-      run:  echo "!/deploy_dist/." > .git-ftp-include
+      run:  echo "!." > .git-ftp-include
+      working-directory: ./build/dist
          
     - name: Deploy 
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
@@ -59,4 +61,4 @@ jobs:
         ftp-server: ftp://ftp.zh11.ch/
         ftp-username: web364f3
         ftp-password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: /home/runner/work/matraum_app/matraum_app/deploy_dist
+        local-dir: ./build/dist
