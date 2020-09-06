@@ -55,7 +55,7 @@ jobs:
       uses: DamianReeves/write-file-action
       with:
         path: .git-ftp-include
-        contents: echo "!*"
+        contents: "!*"
         write-mode: append
     
     - name: Show folders
