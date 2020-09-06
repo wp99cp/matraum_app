@@ -34,9 +34,9 @@ jobs:
          path: './matraum-app/dist/matraum-app'
          file: '.git-ftp-include'
          content: |
-            !*.*
-            !*
-            !*.js     
+            !dist/
+            !dist/*.js
+            !dist/index.html    
 
       - name: Archive build
         if: success()
