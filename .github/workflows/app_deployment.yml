@@ -50,7 +50,7 @@ jobs:
       uses: actions/download-artifact@v1
       with:
        name: deploy_dist     
-       path: './'   
+       path: './dist'   
                  
       
     - name: add .git-ftp-include
@@ -68,9 +68,9 @@ jobs:
          path: ''
          file: '.git-ftp-ignore'
          content: |
-            /matraum-app/*
-            /.idea/*
-            /.github/*
+            matraum-app/*
+            .idea/*
+            .github/*
             .git-ftp-log
             README.md                  
                  
@@ -80,4 +80,4 @@ jobs:
         ftp-server: ftp://ftp.zh11.ch
         ftp-username: web364f3
         ftp-password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./
+        local-dir: ./dist
