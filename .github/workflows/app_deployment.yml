@@ -51,11 +51,11 @@ jobs:
        name: deploy_dist     
        path: './dist'   
                  
-    - name: Upload files to ftp server
-      uses: actions/github-script@v2
+    - name: Upload ftp
+      uses: sebastianpopp/ftp-action@releases/v2
       with:
-          ftpUsername: web364f3
-          ftpPassword:  ${{ secrets.FTP_PASSWORD }}
-          ftpHostname: ftp://ftp.zh11.ch
-          src: './dist'
-          dest: './'
+        host: ftp://ftp.zh11.ch
+        user: web364f3
+        password: ${{ secrets.FTP_PASSWORD }}
+        localDir: "dist"
+        remoteDir: ""
