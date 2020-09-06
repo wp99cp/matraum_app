@@ -58,4 +58,3 @@ jobs:
         user: web364f3
         password: ${{ secrets.FTP_PASSWORD }}
         localDir: "dist"
-        remoteDir: "Test"
