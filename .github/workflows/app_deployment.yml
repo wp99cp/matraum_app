@@ -83,4 +83,4 @@ jobs:
         ftp-username: web364f3
         ftp-password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./dist
-        git-ftp-args: --remote-root "./"
+        git-ftp-args: remote-root "./"
