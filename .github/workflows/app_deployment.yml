@@ -51,18 +51,20 @@ jobs:
        name: deploy_dist
        path: dist
        
-    - name: Display structure of downloaded files
-      run: ls -R
-      working-directory: dist
-   
     - name: add git-ftp-args
       run:  echo "!*" > .git-ftp-include
+      
+    - name: add git-ftp-args for sub-dir
+      run:  echo "!*" > .git-ftp-include
       working-directory: dist
-         
+    
+    - name: Show folders
+      run: ls -R
+               
     - name: Deploy 
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
       with:
         ftp-server: ftp://ftp.zh11.ch/
         ftp-username: web364f3
         ftp-password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: dist
+        local-dir: ./dist
