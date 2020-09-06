@@ -46,14 +46,13 @@ jobs:
       uses: actions/download-artifact@v1
       with:
        name: deploy_dist     
-       path: './dist'   
+       path: '/dist'   
                  
     - name: Upload files to ftp server
-        uses: ./dist
-        id: upload-to-ftp
-        with:
+      uses: actions/github-script@v2
+      with:
           ftpUsername: web364f3
           ftpPassword:  ${{ secrets.FTP_PASSWORD }}
           ftpHostname: ftp://ftp.zh11.ch
-          src: './dist'
-          dest: './'
+          src: '/dist'
+          dest: '/'
