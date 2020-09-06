@@ -61,7 +61,6 @@ jobs:
          path: ''
          file: '.git-ftp-include'
          content: |
-            !*
             !*.js
             !index.html  
                    
@@ -71,3 +70,4 @@ jobs:
         ftp-server: ftp://ftp.zh11.ch
         ftp-username: web364f3
         ftp-password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: /dist
