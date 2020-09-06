@@ -51,7 +51,7 @@ jobs:
        name: deploy_dist
    
     - name: add git-ftp-args
-      run:  echo "!*.*" > /home/runner/work/matraum_app/matraum_app/deploy_dist/deploy_dist/matraum-app/.git-ftp-include
+      run:  echo "!*.*" > /deploy_dist/matraum-app/.git-ftp-include
          
     - name: Deploy 
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
