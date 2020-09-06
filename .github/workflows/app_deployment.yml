@@ -51,12 +51,12 @@ jobs:
        name: deploy_dist
        path: dist
        
-    - name: add git-ftp-args
-      run:  echo "!*" > .git-ftp-include
-      
-    - name: add git-ftp-args for sub-dir
-      run:  echo "!*" > .git-ftp-include
-      working-directory: dist
+    - name: add .git-ftp-include
+      uses: DamianReeves/write-file-action
+      with:
+        path: .git-ftp-include
+        contents: |
+          echo "!*"
     
     - name: Show folders
       run: ls -R
