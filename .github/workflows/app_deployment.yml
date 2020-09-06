@@ -50,6 +50,7 @@ jobs:
     - name: FTP-Deploy-Action
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
       with:
+        local-dir: ./matraum-app/dist
         ftp-server: ftp://ftp.zh11.ch/
         ftp-username: web364f3
         ftp-password: ${{ secrets.FTP_PASSWORD }}
