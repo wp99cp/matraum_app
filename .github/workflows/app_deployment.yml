@@ -39,9 +39,6 @@ jobs:
   FTP-Deploy-Action:
     name: Deploy via FTP
     runs-on: ubuntu-latest
-    defaults:
-      run:
-       working-directory: ./dist
     needs: build
     steps:
    
@@ -62,9 +59,8 @@ jobs:
          path: ''
          file: '.git-ftp-include'
          content: |
-            *.js
-            index.html 
-            * 
+            !*.js
+            !index.html 
                    
     - name: add .git-ftp-ignore
       uses: 1arp/create-a-file-action@0.2
