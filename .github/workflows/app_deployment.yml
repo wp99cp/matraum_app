@@ -69,8 +69,7 @@ jobs:
     - name: Deploy 
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
       with:
-        ftp-server: ftp://ftp.zh11.ch/
+        ftp-server: ftp://ftp.zh11.ch
         ftp-username: web364f3
         ftp-password: ${{ secrets.FTP_PASSWORD }}
         local-dir: ./dist/
-        git-ftp-args: --remote-root ./test
