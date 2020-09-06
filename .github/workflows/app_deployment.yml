@@ -54,8 +54,6 @@ jobs:
       with:
        name: deploy_dist        
                  
-    - name: Show folders
-      run: ls -R -a
       
     - name: add .git-ftp-include
       uses: 1arp/create-a-file-action@0.2
