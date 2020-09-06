@@ -47,10 +47,17 @@ jobs:
       uses: actions/download-artifact@v1
       with:
        name: deploy_dist
-    - name: Deploy
+    - name: Deploy 1
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
       with:
-        local-dir: ./matraum_app/deploy_dist
+        local-dir: /home/runner/work/matraum_app/matraum_app/deploy_dist
+        ftp-server: ftp://ftp.zh11.ch/
+        ftp-username: web364f3
+        ftp-password: ${{ secrets.FTP_PASSWORD }}
+    - name: Deploy 2
+      uses: SamKirkland/FTP-Deploy-Action@3.1.1
+      with:
+        local-dir: ./home/runner/work/matraum_app/matraum_app/deploy_dist
         ftp-server: ftp://ftp.zh11.ch/
         ftp-username: web364f3
         ftp-password: ${{ secrets.FTP_PASSWORD }}
