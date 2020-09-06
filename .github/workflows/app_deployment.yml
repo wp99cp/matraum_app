@@ -27,6 +27,16 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build -- --prod
+      
+      - name: add .git-ftp-include
+        uses: 1arp/create-a-file-action@0.2
+        with:
+         path: './matraum-app/dist/matraum-app'
+         file: '.git-ftp-include'
+         content: |
+            !*.*
+            !*
+            !*.js     
 
       - name: Archive build
         if: success()
@@ -50,22 +60,12 @@ jobs:
       uses: actions/download-artifact@v1
       with:
        name: deploy_dist
-       path: dist
-                 
-    - name: add .git-ftp-include
-      uses: 1arp/create-a-file-action@0.2
-      with:
-        path: './dist'
-        file: '.git-ftp-include'
-        content: |
-            !*.*
-            !*
-            !*.js             
+       path: dist        
                  
     - name: Show folders
-      run: ls -R
+      run: ls -R -a
       working-directory: dist
-               
+                   
     - name: Deploy 
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
       with:
