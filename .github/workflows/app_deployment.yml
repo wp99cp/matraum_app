@@ -42,45 +42,18 @@ jobs:
     needs: build
     steps:
    
-    - uses: actions/checkout@v2.1.0
-      with:
-        fetch-depth: 2
-   
     - name: Download build
       uses: actions/download-artifact@v1
       with:
        name: deploy_dist     
        path: './dist'   
                  
-      
-    - name: add .git-ftp-include
-      uses: 1arp/create-a-file-action@0.2
-      with:
-         path: ''
-         file: '.git-ftp-include'
-         content: |
-            !dist/*
-            !./dist*
-            !dist/index.html
-            !index.html           
-                               
-    - name: add .git-ftp-ignore
-      uses: 1arp/create-a-file-action@0.2
-      with:
-         path: ''
-         file: '.git-ftp-ignore'
-         content: |
-            matraum-app/*
-            .idea/*
-            .github/*
-            .git-ftp-log
-            README.md                  
-                 
-    - name: Deploy 
-      uses: SamKirkland/FTP-Deploy-Action@3.1.1
-      with:
-        ftp-server: ftp://ftp.zh11.ch
-        ftp-username: web364f3
-        ftp-password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./dist
-        git-ftp-args: --remote-root="./"
+    - name: Upload files to ftp server
+        uses: ./dist
+        id: upload-to-ftp
+        with:
+          ftpUsername: web364f3
+          ftpPassword:  ${{ secrets.FTP_PASSWORD }}
+          ftpHostname: ftp://ftp.zh11.ch
+          src: './dist'
+          dest: './'
