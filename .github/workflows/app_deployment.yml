@@ -39,6 +39,9 @@ jobs:
   FTP-Deploy-Action:
     name: Deploy via FTP
     runs-on: ubuntu-latest
+    defaults:
+      run:
+       working-directory: ./dist
     needs: build
     steps:
    
@@ -49,12 +52,10 @@ jobs:
     - name: Download build
       uses: actions/download-artifact@v1
       with:
-       name: deploy_dist
-       path: dist        
+       name: deploy_dist        
                  
     - name: Show folders
       run: ls -R -a
-      working-directory: dist
       
     - name: add .git-ftp-include
       uses: 1arp/create-a-file-action@0.2
@@ -62,9 +63,9 @@ jobs:
          path: ''
          file: '.git-ftp-include'
          content: |
-            !dist/
-            !dist/*.js
-            !dist/index.html  
+            !*
+            !*.js
+            !index.html  
                    
     - name: Deploy 
       uses: SamKirkland/FTP-Deploy-Action@3.1.1
@@ -72,4 +73,3 @@ jobs:
         ftp-server: ftp://ftp.zh11.ch
         ftp-username: web364f3
         ftp-password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./dist/
