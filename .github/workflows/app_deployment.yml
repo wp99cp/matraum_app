@@ -52,12 +52,13 @@ jobs:
        path: dist
        
     - name: add .git-ftp-include
-      uses: DamianReeves/write-file-action
+      uses: 1arp/create-a-file-action@0.2
       with:
-        path: .git-ftp-include
-        contents: echo "!*"
-        write-mode: append
-    
+       path: './'
+       file: '.git-ftp-include'
+       content: |
+            !*
+            
     - name: Show folders
       run: ls -R
                
