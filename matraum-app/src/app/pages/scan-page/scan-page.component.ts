@@ -1,16 +1,20 @@
 import {Component, OnInit} from '@angular/core';
 import jsQR from 'jsqr';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-scan-page',
   templateUrl: './scan-page.component.html',
   styleUrls: ['./scan-page.component.sass']
 })
-export class ScanPageComponent  implements OnInit {
+export class ScanPageComponent implements OnInit {
   title = 'matraum-app';
 
-  constructor() {
+  public action: 'barrow' | 'take-back';
 
+  constructor(private router: Router) {
+
+    this.action = this.router.url.split('/')[2] as 'barrow' | 'take-back';
 
   }
 

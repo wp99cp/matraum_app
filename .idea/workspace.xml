@@ -20,22 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5684a240-f99b-4178-a708-8ee1d2639d22" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/matraum-app/src/assets/icons/icon-128x128.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/matraum-app/src/assets/icons/icon-144x144.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/matraum-app/src/assets/icons/icon-152x152.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/matraum-app/src/assets/icons/icon-192x192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/matraum-app/src/assets/icons/icon-384x384.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/matraum-app/src/assets/icons/icon-512x512.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/matraum-app/src/assets/icons/icon-72x72.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/matraum-app/src/assets/icons/icon-96x96.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/matraum-app/src/assets/icons/logo.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/matraum-app/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/matraum-app/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/matraum-app/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/matraum-app/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/matraum-app/src/app/app.component.sass" beforeDir="false" afterPath="$PROJECT_DIR$/matraum-app/src/app/app.component.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/matraum-app/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/matraum-app/src/app/app.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/matraum-app/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/matraum-app/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/matraum-app/src/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/matraum-app/src/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matraum-app/src/app/pages/scan-page/scan-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/matraum-app/src/app/pages/scan-page/scan-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matraum-app/src/app/pages/scan-page/scan-page.component.sass" beforeDir="false" afterPath="$PROJECT_DIR$/matraum-app/src/app/pages/scan-page/scan-page.component.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matraum-app/src/app/pages/scan-page/scan-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/matraum-app/src/app/pages/scan-page/scan-page.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +101,7 @@
       <workItem from="1598275632085" duration="5044000" />
       <workItem from="1598361772753" duration="16000" />
       <workItem from="1598375593685" duration="606000" />
-      <workItem from="1599459512980" duration="1524000" />
+      <workItem from="1599459512980" duration="3751000" />
     </task>
     <servers />
   </component>

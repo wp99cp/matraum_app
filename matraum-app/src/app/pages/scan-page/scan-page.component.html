@@ -1,13 +1,20 @@
+
 <div id="container">
-  <div>
+
+  <h1>Material {{action === 'barrow' ? 'ausleihen' : 'zurücknehmen'}}</h1>
+
+  <div class="video-frame">
+
     <video autoplay="true" id="videoElement">
     </video>
-    <div>
+
+    <div class="result-banner">
       <p id="QR_Code"></p>
     </div>
+
   </div>
 
 </div>
 
-
+<!-- needed for processing the video... not visible -->
 <canvas id="canvas_temp"></canvas>

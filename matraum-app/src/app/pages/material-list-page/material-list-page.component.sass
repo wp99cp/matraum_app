@@ -1,0 +1,39 @@
+.page-container
+  display: grid
+  place-items: center
+  height: 100%
+
+.material-list
+  display: grid
+  height: 500px
+  overflow-y: scroll
+
+  span
+    text-align: center
+    padding: 16px
+    background-color: lightgray
+    margin: 2.5px
+    width: 250px
+
+.actions
+  display: grid
+  grid-template: "back take-back" "scann scann"
+  grid-template-columns: 50% 50%
+  width: 80%
+
+  span
+    text-align: center
+    padding: 16px
+    background-color: lightgreen
+    margin: 2.5px
+
+  #back-action
+    grid-area: back
+
+  #take-back-action
+    grid-area: take-back
+
+  #scan-action
+    grid-area: scann
+
+

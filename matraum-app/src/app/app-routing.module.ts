@@ -1,7 +1,9 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {SignInPageComponent} from './pages/sign-in-page/sign-in-page.component';
-import {ScanPageComponent} from './pages/scan-page/scan-page.component';
+import {OverviewPageComponent} from './pages/overview-page/overview-page.component';
+import {MaterialListPageComponent} from './pages/material-list-page/material-list-page.component';
+import {ScanPageComponent} from "./pages/scan-page/scan-page.component";
 
 const routes: Routes = [
 
@@ -10,9 +12,16 @@ const routes: Routes = [
     component: SignInPageComponent
 
   },
-
   {
     path: 'overview-page',
+    component: OverviewPageComponent
+  },
+  {
+    path: 'material/:stufe',
+    component: MaterialListPageComponent
+  },
+  {
+    path: 'scan-page/:action',
     component: ScanPageComponent
   }
 
@@ -22,4 +31,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
