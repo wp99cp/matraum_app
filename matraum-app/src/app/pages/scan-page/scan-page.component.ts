@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import jsQR from 'jsqr';
 import {Router} from '@angular/router';
 
+
 @Component({
   selector: 'app-scan-page',
   templateUrl: './scan-page.component.html',
@@ -27,31 +28,29 @@ export class ScanPageComponent implements OnInit {
     if (navigator.mediaDevices.getUserMedia) {
 
       navigator.mediaDevices.getUserMedia({
-
+        audio: false,
         // webcam settings
-        video:
-          {
-            facingMode: 'environment',
-            width: {min: 1024, ideal: 1280, max: 1920},
-            height: {min: 576, ideal: 720, max: 1080}
-          }
-
+        video: {
+          facingMode: 'environment',
+          width: {ideal: 1280},
+          height: {ideal: 720}
+        }
       })
 
         .then((stream) => {
           video.srcObject = stream;
+          this.checkForQRCode();
+
         })
 
         .catch((err0r) => {
+
           console.error(err0r);
+          alert(err0r);
+
         });
 
     }
-
-    // start checking
-    setTimeout(() => {
-      this.check();
-    }, 2000);
 
   }
 
@@ -60,11 +59,11 @@ export class ScanPageComponent implements OnInit {
    * Repeats this function unit a valid QR Code is found in the image.
    *
    */
-  public check(): void {
+  public checkForQRCode(): void {
 
     setTimeout(() => {
 
-      console.log('Check for QR Code...');
+      const t0 = performance.now();
 
       const canvas = document.getElementById('canvas_temp') as HTMLCanvasElement;
       const video = document.querySelector('#videoElement') as HTMLVideoElement;
@@ -75,20 +74,22 @@ export class ScanPageComponent implements OnInit {
 
       const context = canvas.getContext('2d');
       const image = context.getImageData(0, 0, canvas.width, canvas.height);
+
       const code = jsQR(image.data, canvas.width, canvas.height);
 
-      if (code) {
+      const t1 = performance.now();
+      console.log('Call to doSomething took ' + (t1 - t0) + ' milliseconds.');
 
-        console.log('Found QR code', code);
+      if (code) {
 
         const htmlElement = document.getElementById('QR_Code') as HTMLParagraphElement;
         htmlElement.innerText = code.data;
 
       }
 
-      this.check();
+      this.checkForQRCode();
 
-    }, 150);
+    }, 200);
 
   }
 }

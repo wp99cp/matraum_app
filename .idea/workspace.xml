@@ -21,10 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="5684a240-f99b-4178-a708-8ee1d2639d22" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/matraum-app/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/matraum-app/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/matraum-app/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/matraum-app/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matraum-app/src/app/app.component.sass" beforeDir="false" afterPath="$PROJECT_DIR$/matraum-app/src/app/app.component.sass" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matraum-app/src/app/pages/material-list-page/material-list-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/matraum-app/src/app/pages/material-list-page/material-list-page.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/matraum-app/src/app/pages/scan-page/scan-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/matraum-app/src/app/pages/scan-page/scan-page.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/matraum-app/src/app/pages/scan-page/scan-page.component.sass" beforeDir="false" afterPath="$PROJECT_DIR$/matraum-app/src/app/pages/scan-page/scan-page.component.sass" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/matraum-app/src/app/pages/scan-page/scan-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/matraum-app/src/app/pages/scan-page/scan-page.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -101,7 +100,7 @@
       <workItem from="1598275632085" duration="5044000" />
       <workItem from="1598361772753" duration="16000" />
       <workItem from="1598375593685" duration="606000" />
-      <workItem from="1599459512980" duration="3751000" />
+      <workItem from="1599459512980" duration="6458000" />
     </task>
     <servers />
   </component>
