@@ -79,7 +79,6 @@ export class AppComponent implements OnInit {
 
         const htmlElement = document.getElementById('QR_Code') as HTMLParagraphElement;
         htmlElement.innerText = code.data;
-        return;
 
       }
 
