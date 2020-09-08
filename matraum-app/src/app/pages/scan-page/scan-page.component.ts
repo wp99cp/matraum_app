@@ -1,14 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import jsQR from 'jsqr';
+import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 
+declare var Module: any;
 
 @Component({
   selector: 'app-scan-page',
   templateUrl: './scan-page.component.html',
   styleUrls: ['./scan-page.component.sass']
 })
-export class ScanPageComponent implements OnInit {
+export class ScanPageComponent {
   title = 'matraum-app';
 
   public action: 'barrow' | 'take-back';
@@ -16,80 +16,124 @@ export class ScanPageComponent implements OnInit {
   constructor(private router: Router) {
 
     this.action = this.router.url.split('/')[2] as 'barrow' | 'take-back';
+    console.log('Action: ' + this.action);
 
-  }
 
-  ngOnInit(): void {
+    Module.onRuntimeInitialized = async _ => {
 
-    // used for livestream the camera to the video element
-    const video = document.querySelector('#videoElement') as HTMLMediaElement;
+      console.log("Start!!");
 
-    // request permition
-    if (navigator.mediaDevices.getUserMedia) {
+      const video = document.getElementById('live') as HTMLVideoElement;
+      const canvas = document.getElementById('canvas') as HTMLCanvasElement;
+      const ctx = canvas.getContext('2d');
+      const desiredWidth = 1280;
+      const desiredHeight = 720;
 
-      navigator.mediaDevices.getUserMedia({
-        audio: false,
-        // webcam settings
+      // wrap all C functions using cwrap. Note that we have to provide crwap with the function signature.
+      const api = {
+        scan_image: Module.cwrap('scan_image', '', ['number', 'number', 'number']),
+        create_buffer: Module.cwrap('create_buffer', 'number', ['number', 'number']),
+        destroy_buffer: Module.cwrap('destroy_buffer', '', ['number']),
+      };
+
+      // settings for the getUserMedia call
+      const constraints = {
         video: {
-          facingMode: 'environment',
-          width: {ideal: 1280},
-          height: {ideal: 720}
+          // the browser will try to honor this resolution, but it may end up being lower.
+          width: desiredWidth,
+          height: desiredHeight
         }
-      })
+      };
 
-        .then((stream) => {
-          video.srcObject = stream;
-          this.checkForQRCode();
 
-        })
+      // open the webcam stream
+      navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+        // stream is a MediaStream object
+        video.srcObject = stream;
+        video.play();
 
-        .catch((err0r) => {
+        // tell the canvas which resolution we ended up getting from the webcam
+        const track = stream.getVideoTracks()[0];
+        const actualSettings = track.getSettings();
+        console.log(actualSettings.width, actualSettings.height);
+        canvas.width = actualSettings.width;
+        canvas.height = actualSettings.height;
 
-          console.error(err0r);
-          alert(err0r);
+        // every k milliseconds, we draw the contents of the video to the canvas and run the detector.
+        const timer = setInterval(detectSymbols, 250);
 
-        });
+      }).catch((e) => {
+        throw e;
+      });
 
-    }
 
-  }
+      function detectSymbols(): void {
+        // grab a frame from the media source and draw it to the canvas
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-  /**
-   * Check for a QR Code in the current video snapshot.
-   * Repeats this function unit a valid QR Code is found in the image.
-   *
-   */
-  public checkForQRCode(): void {
+        // get the image data from the canvas
+        const image = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
-    setTimeout(() => {
+        // convert the image data to grayscale
+        const grayData = [];
+        const d = image.data;
+        for (let i = 0, j = 0; i < d.length; i += 4, j++) {
+          // tslint:disable-next-line:no-bitwise
+          grayData[j] = (d[i] * 66 + d[i + 1] * 129 + d[i + 2] * 25 + 4096) >> 8;
+        }
 
-      const t0 = performance.now();
+        // put the data into the allocated buffer on the wasm heap.
+        const p = api.create_buffer(image.width, image.height);
+        Module.HEAP8.set(grayData, p);
 
-      const canvas = document.getElementById('canvas_temp') as HTMLCanvasElement;
-      const video = document.querySelector('#videoElement') as HTMLVideoElement;
+        // call the scanner function
+        api.scan_image(p, image.width, image.height);
 
-      canvas.width = video.videoWidth;
-      canvas.height = video.videoHeight;
-      canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-
-      const context = canvas.getContext('2d');
-      const image = context.getImageData(0, 0, canvas.width, canvas.height);
-
-      const code = jsQR(image.data, canvas.width, canvas.height);
-
-      const t1 = performance.now();
-      console.log('Call to doSomething took ' + (t1 - t0) + ' milliseconds.');
-
-      if (code) {
-
-        const htmlElement = document.getElementById('QR_Code') as HTMLParagraphElement;
-        htmlElement.innerText = code.data;
+        // clean up
+        // (this is not really necessary in this example as we could reuse the buffer, but is used to
+        // demonstrate how you can manage Wasm heap memory from the js environment)
+        api.destroy_buffer(p);
 
       }
 
-      this.checkForQRCode();
+      function drawPoly(ctxLocal, poly): void {
+        // drawPoly expects a flat array of coordinates forming a polygon (e.g. [x1,y1,x2,y2,... etc])
+        ctxLocal.beginPath();
+        ctxLocal.moveTo(poly[0], poly[1]);
+        for (let item = 2; item < poly.length - 1; item += 2) {
+          ctxLocal.lineTo(poly[item], poly[item + 1]);
+        }
 
-    }, 200);
+        ctxLocal.lineWidth = 2;
+        ctxLocal.strokeStyle = '#FF0000';
+        ctxLocal.closePath();
+        ctxLocal.stroke();
+      }
+
+// render the string contained in the barcode as text on the canvas
+      function renderData(ctxLocal, data, x, y): void {
+        ctxLocal.font = '15px Arial';
+        ctxLocal.fillStyle = 'red';
+        ctxLocal.fillText(data, x, y);
+      }
+
+      // set the function that should be called whenever a barcode is detected
+      Module.processResult = (symbol, data, polygon) => {
+
+        console.log( symbol + ' found: ' + data);
+
+
+        // draw the bounding polygon
+        drawPoly(ctx, polygon);
+
+        // render the data at the first coordinate of the polygon
+        renderData(ctx, data, polygon[0], polygon[1] - 10);
+      };
+
+    };
+
 
   }
+
+
 }

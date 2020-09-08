@@ -1,20 +1,8 @@
-
-<div id="container">
-
-  <h1>Material {{action === 'barrow' ? 'ausleihen' : 'zurücknehmen'}}</h1>
-
-  <div class="video-frame">
-
-    <video autoplay="true" id="videoElement">
-    </video>
-
-    <div class="result-banner">
-      <p id="QR_Code"> scanning...</p>
-    </div>
-
-  </div>
-
+<div>
+  <!-- note that we hide the live video element using 'display:none', that way only the canvas is rendered -->
+  <video id="live" width="320" height="240" autoplay style="border:5px solid #000000"> </video>
+  <canvas id="canvas" style="border:5px solid #000000"> </canvas>
 </div>
 
-<!-- needed for processing the video... not visible -->
-<canvas id="canvas_temp"></canvas>
+
+

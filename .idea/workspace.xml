@@ -10,21 +10,27 @@
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
+    </expand>
+    <select>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:origin/master" type="e8cecc67:BranchNodeDescriptor" />
       </path>
-    </expand>
-    <select />
+    </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5684a240-f99b-4178-a708-8ee1d2639d22" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/matraum-app/src/assets/wasm/scanner.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/matraum-app/src/assets/wasm/scanner.wasm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/matraum-app/src/app/app.component.sass" beforeDir="false" afterPath="$PROJECT_DIR$/matraum-app/src/app/app.component.sass" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/matraum-app/src/app/pages/material-list-page/material-list-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/matraum-app/src/app/pages/material-list-page/material-list-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matraum-app/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/matraum-app/angular.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matraum-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/matraum-app/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matraum-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/matraum-app/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/matraum-app/src/app/pages/scan-page/scan-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/matraum-app/src/app/pages/scan-page/scan-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matraum-app/src/app/pages/scan-page/scan-page.component.sass" beforeDir="false" afterPath="$PROJECT_DIR$/matraum-app/src/app/pages/scan-page/scan-page.component.sass" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/matraum-app/src/app/pages/scan-page/scan-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/matraum-app/src/app/pages/scan-page/scan-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/matraum-app/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/matraum-app/src/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +38,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <branch-grouping />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1gXyZk0ObQvSJNjgjxjsRGL7ecs" />
@@ -44,7 +51,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/matraum-app/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../angular-wasm-master" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
@@ -54,8 +61,15 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Projekte\matraum_app\matraum-app\src\assets\wasm" />
+      <recent name="D:\Projekte\matraum_app\matraum-app\src\app\pages\scan-page" />
       <recent name="D:\Projekte\matraum_app\matraum-app\src" />
       <recent name="D:\Projekte\matraum_app\matraum-app\src\assets" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projekte\matraum_app\matraum-app\src" />
+      <recent name="D:\Projekte\matraum_app\matraum-app\src\app" />
+      <recent name="D:\Projekte\matraum_app\matraum-app\src\app\pages\scan-page" />
     </key>
   </component>
   <component name="RunManager" selected="npm.Angular CLI Server">
@@ -101,11 +115,14 @@
       <workItem from="1598361772753" duration="16000" />
       <workItem from="1598375593685" duration="606000" />
       <workItem from="1599459512980" duration="6458000" />
+      <workItem from="1599508251540" duration="1503000" />
+      <workItem from="1599509796543" duration="26000" />
+      <workItem from="1599552680317" duration="4255000" />
+      <workItem from="1599561414077" duration="78000" />
+      <workItem from="1599561504976" duration="2000" />
+      <workItem from="1599563847710" duration="4611000" />
     </task>
     <servers />
-  </component>
-  <component name="TerminalProjectNonSharedOptionsProvider">
-    <option name="shellPath" value="&quot;C:\Users\pucyril\AppData\Local\Microsoft\WindowsApps\debian.exe&quot; run" />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
@@ -115,21 +132,39 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2685" y="382" key="#com.intellij.ide.util.MemberChooser" timestamp="1598275815988">
       <screen x="1920" y="126" width="1920" height="1050" />
     </state>
     <state x="2685" y="382" key="#com.intellij.ide.util.MemberChooser/1920.126.1920.1050/0.0.1920.1170/-1920.126.1920.1080@1920.126.1920.1050" timestamp="1598275815988" />
-    <state x="2660" y="281" key="FileChooserDialogImpl" timestamp="1599459772590">
+    <state x="2610" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1599555898457">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
-    <state x="2660" y="281" key="FileChooserDialogImpl/1920.0.1920.1050/0.0.1920.1170@1920.0.1920.1050" timestamp="1599459772590" />
+    <state x="2610" y="287" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1920.1050/0.0.1920.1170@1920.0.1920.1050" timestamp="1599555898457" />
+    <state x="740" y="281" key="FileChooserDialogImpl" timestamp="1599563980108">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="740" y="281" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1599563980108" />
+    <state x="2660" y="281" key="FileChooserDialogImpl/1920.0.1920.1050/0.0.1920.1170@1920.0.1920.1050" timestamp="1599556265868" />
     <state x="2660" y="407" key="FileChooserDialogImpl/1920.126.1920.1050/0.0.1920.1170/-1920.126.1920.1080@1920.126.1920.1050" timestamp="1598361786683" />
     <state width="1899" height="295" key="GridCell.Tab.0.bottom" timestamp="1598275618331">
       <screen x="1920" y="126" width="1920" height="1050" />
@@ -147,13 +182,22 @@
       <screen x="1920" y="126" width="1920" height="1050" />
     </state>
     <state width="1899" height="295" key="GridCell.Tab.0.right/1920.126.1920.1050/0.0.1920.1170/-1920.126.1920.1080@1920.126.1920.1050" timestamp="1598275618331" />
-    <state x="2381" y="311" key="SettingsEditor" timestamp="1598275344821">
-      <screen x="1920" y="126" width="1920" height="1050" />
+    <state x="2381" y="185" key="SettingsEditor" timestamp="1599555975180">
+      <screen x="1920" y="0" width="1920" height="1050" />
     </state>
+    <state x="2381" y="185" key="SettingsEditor/1920.0.1920.1050/0.0.1920.1170@1920.0.1920.1050" timestamp="1599555975180" />
     <state x="2381" y="311" key="SettingsEditor/1920.126.1920.1050/0.0.1920.1170/-1920.126.1920.1080@1920.126.1920.1050" timestamp="1598275344821" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1599460517045">
       <screen x="1920" y="0" width="1920" height="1050" />
     </state>
     <state width="498" height="446" key="SwitcherDM/1920.0.1920.1050/0.0.1920.1170@1920.0.1920.1050" timestamp="1599460517045" />
+    <state x="2656" y="312" key="refactoring.ChangeSignatureDialog" timestamp="1599555523291">
+      <screen x="1920" y="0" width="1920" height="1050" />
+    </state>
+    <state x="2656" y="312" key="refactoring.ChangeSignatureDialog/1920.0.1920.1050/0.0.1920.1170@1920.0.1920.1050" timestamp="1599555523291" />
+    <state x="274" y="233" key="search.everywhere.popup" timestamp="1599566280075">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="274" y="233" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1599566280075" />
   </component>
 </project>

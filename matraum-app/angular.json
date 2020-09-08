@@ -30,7 +30,9 @@
             "styles": [
               "src/styles.sass"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/wasm/scanner.js"
+            ]
           },
           "configurations": {
             "production": {
