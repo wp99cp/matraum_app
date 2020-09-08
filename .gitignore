@@ -6,3 +6,4 @@
 *.launch
 .settings/
 *.sublime-workspace
+.idea/workspace.xml
