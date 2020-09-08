@@ -1,11 +1,11 @@
-<div>
-  <!-- note that we hide the live video element using 'display:none', that way only the canvas is rendered -->
-  <video id="live" width="320" height="240" autoplay style="border:5px solid #000000"></video>
-  <canvas id="canvas" style="border:5px solid #000000">
-  </canvas>
-  <div class="log">
-    <span *ngFor="let log of logs"> {{log}} </span>
-  </div>
+<div class="frame">
+  <video id="live" width="320" height="240" autoplay></video>
+  <canvas id="canvas"></canvas>
+  <canvas id="canvasTransp"></canvas>
+</div>
+
+<div class="log">
+  <span *ngFor="let log of logs"> {{log}} </span>
 </div>
 
 

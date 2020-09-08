@@ -29,6 +29,10 @@ export class ScanPageComponent {
 
       const video = document.getElementById('live') as HTMLVideoElement;
       const canvas = document.getElementById('canvas') as HTMLCanvasElement;
+
+      const canvasTransp = document.getElementById('canvasTransp') as HTMLCanvasElement;
+      const ctxTransp = canvasTransp.getContext('2d');
+
       const ctx = canvas.getContext('2d');
       const desiredWidth = 1280;
       const desiredHeight = 720;
@@ -67,6 +71,9 @@ export class ScanPageComponent {
         canvas.width = actualSettings.width;
         canvas.height = actualSettings.height;
 
+        canvasTransp.width = actualSettings.width;
+        canvasTransp.height = actualSettings.height;
+
         // every k milliseconds, we draw the contents of the video to the canvas and run the detector.
         const timer = setInterval(detectSymbols, 200);
 
@@ -77,6 +84,7 @@ export class ScanPageComponent {
 
       function detectSymbols(): void {
 
+        ctxTransp.clearRect(0, 0, canvasTransp.width, canvasTransp.height);
 
         // grab a frame from the media source and draw it to the canvas
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -133,7 +141,7 @@ export class ScanPageComponent {
 
       // render the string contained in the barcode as text on the canvas
       function renderData(ctxLocal, data, x, y): void {
-        ctxLocal.font = '20px Arial';
+        ctxLocal.font = '25px Arial';
         ctxLocal.fillStyle = 'red';
         ctxLocal.fillText(data, x, y);
       }
@@ -144,10 +152,10 @@ export class ScanPageComponent {
         const message = this.qrCodeFound(symbol, data);
 
         // draw the bounding polygon
-        // drawPoly(ctx, polygon);
+        drawPoly(ctxTransp, polygon);
 
         // render the data at the first coordinate of the polygon
-        // renderData(ctx, message, polygon[0], polygon[1] - 10);
+        renderData(ctxTransp, message, polygon[0], polygon[1] - 10);
 
       };
 
