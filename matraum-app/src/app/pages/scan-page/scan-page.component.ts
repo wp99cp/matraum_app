@@ -71,8 +71,8 @@ export class ScanPageComponent {
         canvas.width = actualSettings.width;
         canvas.height = actualSettings.height;
 
-        canvasTransp.height = actualSettings.width;
-        canvasTransp.width = actualSettings.height;
+        canvasTransp.width = actualSettings.width;
+        canvasTransp.height = actualSettings.height;
 
         // every k milliseconds, we draw the contents of the video to the canvas and run the detector.
         const timer = setInterval(detectSymbols, 200);
@@ -130,10 +130,10 @@ export class ScanPageComponent {
         ctxLocal.beginPath();
         ctxLocal.moveTo(poly[0], poly[1]);
         for (let item = 2; item < poly.length - 1; item += 2) {
-          ctxLocal.lineTo(poly[item], poly[item + 1]);
+          ctxLocal.lineTo(poly[item + 1], poly[item]);
         }
 
-        ctxLocal.lineWidth = 2;
+        ctxLocal.lineWidth = 5;
         ctxLocal.strokeStyle = '#FF0000';
         ctxLocal.closePath();
         ctxLocal.stroke();
@@ -143,7 +143,7 @@ export class ScanPageComponent {
       function renderData(ctxLocal, data, x, y): void {
         ctxLocal.font = '25px Arial';
         ctxLocal.fillStyle = 'red';
-        ctxLocal.fillText(data, x, y);
+        ctxLocal.fillText(data, y, x);
       }
 
       // set the function that should be called whenever a barcode is detected
