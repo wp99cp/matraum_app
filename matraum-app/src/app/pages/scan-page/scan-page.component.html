@@ -17,11 +17,13 @@
 
   <div class="amount-actions">
     <p (click)="decrement()">-</p>
-    <p (click)="increment()">+</p>
+    <p (click)="increment()" [ngClass]="{'deactivated' : counter === maxCounter}">+</p>
   </div>
 
   <div class="action">
-    <span (click)="add()">Hinzufügen</span>
+    <span *ngIf="action === 'barrow'" (click)="add()">Ausleihen</span>
+    <span *ngIf="action !== 'barrow'" (click)="remove()">Zurückbuchen</span>
+
   </div>
 
 </div>

@@ -15,15 +15,16 @@ export class ScanPageComponent {
   title = 'matraum-app';
   public action: 'barrow' | 'take-back';
   public counter = 1;
+  private maxCounter = 1;
   public name = '';
   public description = '';
-
   public showOverview = false;
+  private id = 0;
   private timer;
 
   constructor(private router: Router, private ref: ChangeDetectorRef, private db: AngularFirestore) {
 
-    this.action = this.router.url.split('/')[2] as 'barrow' | 'take-back';
+    this.action = this.router.url.split('/')[4] as 'barrow' | 'take-back';
     console.log('Action: ' + this.action);
 
     this.logs = 'No QR-Code foud...';
@@ -201,7 +202,30 @@ export class ScanPageComponent {
         this.name = ref.data().material;
         this.description = ref.data().description;
 
+        this.id = parseInt(data);
+
+
       });
+
+
+    const name = this.router.url.split('/')[2];
+    this.db.doc('open_borrowings/' + name).get().subscribe(ref => {
+
+      const mats = ref.data().materials;
+
+      if (mats[data] !== undefined) {
+        this.maxCounter = mats[data].amount;
+      } else{
+        this.counter = 0;
+
+        if(this.action === 'barrow'){
+          this.maxCounter = 0;
+        }
+
+      }
+
+    });
+
 
 
     return 'Lagerblachen';
@@ -211,6 +235,9 @@ export class ScanPageComponent {
 
   increment(): void {
 
+    if(this.counter === this.maxCounter)
+      return;
+
     this.counter++;
 
   }
@@ -219,14 +246,80 @@ export class ScanPageComponent {
 
     this.counter--;
 
-    if (this.counter === 0) {
+    if (this.counter <= 0) {
       this.showOverview = false;
     }
 
 
   }
 
+  remove(): void {
+
+    const name = this.router.url.split('/')[2];
+
+    this.db.doc('open_borrowings/' + name).get().subscribe(ref => {
+
+      console.log(ref.data())
+
+      const mats = ref.data().materials;
+
+      if (mats[this.id] !== undefined) {
+        mats[this.id].amount = mats[this.id].amount - this.counter;
+
+        if (mats[this.id].amount === 0) {
+          delete mats[this.id];
+        }
+
+      }
+
+      console.log(mats)
+
+      this.db.doc('open_borrowings/' + name).update({
+
+        materials: mats
+
+      });
+
+      this.showOverview = false;
+
+    });
+
+
+  }
+
   add(): void {
+
+    this.maxCounter = 1000;
+
+    const name = this.router.url.split('/')[2];
+
+    console.log(name)
+
+    this.db.doc('open_borrowings/' + name).get().subscribe(ref => {
+
+      console.log(ref.data())
+
+      const mats = ref.data().materials;
+
+      if (mats[this.id] === undefined)
+        mats[this.id] = {
+          amount: this.counter
+        };
+      else {
+        mats[this.id].amount = mats[this.id].amount + this.counter;
+      }
+
+      console.log(mats)
+
+      this.db.doc('open_borrowings/' + name).update({
+
+        materials: mats
+
+      });
+
+      this.showOverview = false;
+
+    });
 
 
   }
