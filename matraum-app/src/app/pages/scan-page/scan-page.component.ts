@@ -65,9 +65,14 @@ export class ScanPageComponent {
       });
 
 
+
       function detectSymbols(): void {
+
+
         // grab a frame from the media source and draw it to the canvas
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        let t0 = performance.now();
 
         // get the image data from the canvas
         const image = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -91,6 +96,9 @@ export class ScanPageComponent {
         // (this is not really necessary in this example as we could reuse the buffer, but is used to
         // demonstrate how you can manage Wasm heap memory from the js environment)
         api.destroy_buffer(p);
+
+        let t1 = performance.now();
+        console.log((t1 - t0).toFixed(2) + " ms");
 
       }
 
