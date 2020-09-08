@@ -1,5 +1,6 @@
 import {ChangeDetectorRef, Component} from '@angular/core';
 import {Router} from '@angular/router';
+import {AngularFirestore} from '@angular/fire/firestore';
 
 declare var Module: any;
 
@@ -14,11 +15,13 @@ export class ScanPageComponent {
   title = 'matraum-app';
   public action: 'barrow' | 'take-back';
   public counter = 1;
-  public name = 'Programmblachen';
+  public name = '';
+  public description = '';
+
   public showOverview = false;
   private timer;
 
-  constructor(private router: Router, private ref: ChangeDetectorRef) {
+  constructor(private router: Router, private ref: ChangeDetectorRef, private db: AngularFirestore) {
 
     this.action = this.router.url.split('/')[2] as 'barrow' | 'take-back';
     console.log('Action: ' + this.action);
@@ -189,6 +192,16 @@ export class ScanPageComponent {
 
     console.log(symbol + ' found: ' + data);
     this.logs = data;
+
+    this.name = '';
+    this.description = '';
+
+    this.db.doc('stock/' + data).get()
+      .subscribe(ref => {
+        this.name = ref.data().material;
+        this.description = ref.data().description;
+
+      });
 
 
     return 'Lagerblachen';
