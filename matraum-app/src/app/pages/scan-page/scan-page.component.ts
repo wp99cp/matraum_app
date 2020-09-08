@@ -130,7 +130,7 @@ export class ScanPageComponent {
         ctxLocal.beginPath();
         ctxLocal.moveTo(poly[0], poly[1]);
         for (let item = 2; item < poly.length - 1; item += 2) {
-          ctxLocal.lineTo(poly[item + 1], poly[item]);
+          ctxLocal.lineTo(poly[item ], poly[item + 1]);
         }
 
         ctxLocal.lineWidth = 5;
@@ -143,7 +143,7 @@ export class ScanPageComponent {
       function renderData(ctxLocal, data, x, y): void {
         ctxLocal.font = '25px Arial';
         ctxLocal.fillStyle = 'red';
-        ctxLocal.fillText(data, y, x);
+        ctxLocal.fillText(data, x, y);
       }
 
       // set the function that should be called whenever a barcode is detected
