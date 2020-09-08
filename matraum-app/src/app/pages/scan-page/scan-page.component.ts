@@ -71,8 +71,8 @@ export class ScanPageComponent {
         canvas.width = actualSettings.width;
         canvas.height = actualSettings.height;
 
-        canvasTransp.width = actualSettings.width;
-        canvasTransp.height = actualSettings.height;
+        canvasTransp.height = actualSettings.width;
+        canvasTransp.width = actualSettings.height;
 
         // every k milliseconds, we draw the contents of the video to the canvas and run the detector.
         const timer = setInterval(detectSymbols, 200);
