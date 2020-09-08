@@ -34,8 +34,8 @@ export class ScanPageComponent {
       const ctxTransp = canvasTransp.getContext('2d');
 
       const ctx = canvas.getContext('2d');
-      const desiredWidth = 1280;
-      const desiredHeight = 720;
+      const desiredWidth = 420;
+      const desiredHeight = 420;
 
       const logs = this.logs;
 
@@ -75,7 +75,7 @@ export class ScanPageComponent {
         canvasTransp.height = actualSettings.height;
 
         // every k milliseconds, we draw the contents of the video to the canvas and run the detector.
-        const timer = setInterval(detectSymbols, 200);
+        const timer = setInterval(detectSymbols, 100);
 
       }).catch((e) => {
         throw e;
