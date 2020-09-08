@@ -15,10 +15,10 @@ export class ScanPageComponent {
   title = 'matraum-app';
   public action: 'barrow' | 'take-back';
   public counter = 1;
-  private maxCounter = 1;
   public name = '';
   public description = '';
   public showOverview = false;
+  private maxCounter = 1;
   private id = 0;
   private timer;
 
@@ -211,21 +211,25 @@ export class ScanPageComponent {
     const name = this.router.url.split('/')[2];
     this.db.doc('open_borrowings/' + name).get().subscribe(ref => {
 
-      const mats = ref.data().materials;
+        const mats = ref.data().materials;
 
-      if (mats[data] !== undefined) {
-        this.maxCounter = mats[data].amount;
-      } else{
-        this.counter = 0;
+        if (this.action !== 'barrow') {
 
-        if(this.action === 'barrow'){
-          this.maxCounter = 0;
+          if (mats[data] !== undefined) {
+            this.maxCounter = mats[data].amount;
+          } else {
+
+            this.counter = 0;
+            this.maxCounter = 0;
+
+          }
+
+        } else {
+          this.maxCounter = 1000;
+
         }
-
       }
-
-    });
-
+    );
 
 
     return 'Lagerblachen';
@@ -235,7 +239,7 @@ export class ScanPageComponent {
 
   increment(): void {
 
-    if(this.counter === this.maxCounter)
+    if (this.counter === this.maxCounter)
       return;
 
     this.counter++;
