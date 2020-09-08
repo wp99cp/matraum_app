@@ -36,8 +36,10 @@ export class ScanPageComponent {
 
       // settings for the getUserMedia call
       const constraints = {
+        audio: false,
         video: {
           // the browser will try to honor this resolution, but it may end up being lower.
+          facingMode: 'environment',
           width: desiredWidth,
           height: desiredHeight
         }
