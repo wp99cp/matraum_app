@@ -68,7 +68,7 @@ export class ScanPageComponent {
         canvas.height = actualSettings.height;
 
         // every k milliseconds, we draw the contents of the video to the canvas and run the detector.
-        const timer = setInterval(detectSymbols, 10);
+        const timer = setInterval(detectSymbols, 200);
 
       }).catch((e) => {
         throw e;
@@ -144,10 +144,10 @@ export class ScanPageComponent {
         const message = this.qrCodeFound(symbol, data);
 
         // draw the bounding polygon
-        drawPoly(ctx, polygon);
+        // drawPoly(ctx, polygon);
 
         // render the data at the first coordinate of the polygon
-        renderData(ctx, message, polygon[0], polygon[1] - 10);
+        // renderData(ctx, message, polygon[0], polygon[1] - 10);
 
       };
 
