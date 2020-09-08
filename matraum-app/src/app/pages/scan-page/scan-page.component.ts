@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {ChangeDetectorRef, Component} from '@angular/core';
 import {Router} from '@angular/router';
 
 declare var Module: any;
@@ -9,15 +9,21 @@ declare var Module: any;
   styleUrls: ['./scan-page.component.sass']
 })
 export class ScanPageComponent {
-  title = 'matraum-app';
 
+  public logs: string[];
+  title = 'matraum-app';
   public action: 'barrow' | 'take-back';
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private ref: ChangeDetectorRef) {
 
     this.action = this.router.url.split('/')[2] as 'barrow' | 'take-back';
     console.log('Action: ' + this.action);
 
+    this.logs = ['Logs...'];
+
+    setInterval(() => {
+      this.ref.markForCheck();
+    }, 200);
 
     Module.onRuntimeInitialized = async _ => {
 
@@ -26,6 +32,8 @@ export class ScanPageComponent {
       const ctx = canvas.getContext('2d');
       const desiredWidth = 1280;
       const desiredHeight = 720;
+
+      const logs = this.logs;
 
       // wrap all C functions using cwrap. Note that we have to provide crwap with the function signature.
       const api = {
@@ -67,14 +75,13 @@ export class ScanPageComponent {
       });
 
 
-
       function detectSymbols(): void {
 
 
         // grab a frame from the media source and draw it to the canvas
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-        let t0 = performance.now();
+        const t0 = performance.now();
 
         // get the image data from the canvas
         const image = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -99,8 +106,14 @@ export class ScanPageComponent {
         // demonstrate how you can manage Wasm heap memory from the js environment)
         api.destroy_buffer(p);
 
-        let t1 = performance.now();
-        console.log((t1 - t0).toFixed(2) + " ms");
+        const t1 = performance.now();
+        logs.push((t1 - t0).toFixed(2) + ' ms');
+
+        if (logs.length > 5) {
+          logs.shift();
+        }
+
+        this.logs = logs;
 
       }
 
@@ -142,6 +155,7 @@ export class ScanPageComponent {
 
 
   }
+
 
   qrCodeFound(symbol: string, data: string): string {
 
