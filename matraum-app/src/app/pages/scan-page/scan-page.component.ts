@@ -68,8 +68,8 @@ export class ScanPageComponent {
       video: {
         // the browser will try to honor this resolution, but it may end up being lower.
         facingMode: 'environment',
-        width: {ideal: desiredWidth, max: 480},
-        height: {ideal: desiredHeight, max: 360}
+        width: {ideal: desiredWidth, max: 512},
+        height: {ideal: desiredHeight, max: 512}
       }
     };
 
