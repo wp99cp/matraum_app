@@ -1,5 +1,61 @@
-#canvas
-  height: 300px
+#live, #canvasTransp
+  width: 100%
+  position: absolute
 
-#live
+#canvas
   display: none
+
+.frame
+  padding-top: 50px
+
+.log
+  margin-top: -30px
+
+#overlay
+  position: fixed
+  background-color: antiquewhite
+  width: calc(100% - 50px)
+  height: calc(100% - 50px)
+  margin: 25px
+  top: 0
+  display: grid
+  place-items: center
+
+  .count
+    font-size: 50px
+
+  .amount-actions
+    float: right
+    display: flex
+
+    p
+      margin: 10px
+      background-color: lightgreen
+      height: 100px
+      width: 100px
+      line-height: 100px
+      border-radius: 50px
+      text-align: center
+
+  .action
+
+    span
+      margin: 10px
+      background-color: lightgreen
+      padding: 20px 50px
+      text-align: center
+      border-radius: 10px
+
+.close-scanner
+  position: fixed
+  bottom: 20px
+  width: 100%
+  display: grid
+  place-items: center
+
+  span
+    margin: 10px
+    background-color: lightgreen
+    padding: 20px 50px
+    text-align: center
+    border-radius: 10px
