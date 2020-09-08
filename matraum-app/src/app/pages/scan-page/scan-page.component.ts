@@ -178,6 +178,11 @@ export class ScanPageComponent {
 
   qrCodeFound(symbol: string, data: string): string {
 
+    // already found
+    if (this.showOverview) {
+      return;
+    }
+
     // stop search process...
     this.showOverview = true;
     this.counter = 1;
