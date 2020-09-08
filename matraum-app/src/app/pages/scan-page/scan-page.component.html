@@ -5,8 +5,28 @@
 </div>
 
 <div class="log">
-  <span *ngFor="let log of logs"> {{log}} </span>
+  <span> {{logs}} </span>
+</div>
+
+<div id="overlay" *ngIf="showOverview">
+
+  <h1> {{name}} </h1>
+
+  <span class="count"> {{counter}} </span>
+
+  <div class="amount-actions">
+    <p (click)="decrement()">-</p>
+    <p (click)="increment()">+</p>
+  </div>
+
+  <div class="action">
+    <span (click)="add()">Hinzufügen</span>
+  </div>
+
 </div>
 
 
+<div class="close-scanner" *ngIf="!showOverview">
+  <span routerLink="../..">Abbrechen</span>
+</div>
 

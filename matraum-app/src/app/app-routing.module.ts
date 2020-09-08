@@ -21,7 +21,7 @@ const routes: Routes = [
     component: MaterialListPageComponent
   },
   {
-    path: 'scan-page/:action',
+    path: 'material/:stufe/scan-page/:action',
     component: ScanPageComponent
   }
 
