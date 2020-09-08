@@ -21,8 +21,6 @@ export class ScanPageComponent {
 
     Module.onRuntimeInitialized = async _ => {
 
-      console.log("Start!!");
-
       const video = document.getElementById('live') as HTMLVideoElement;
       const canvas = document.getElementById('canvas') as HTMLCanvasElement;
       const ctx = canvas.getContext('2d');
@@ -60,7 +58,7 @@ export class ScanPageComponent {
         canvas.height = actualSettings.height;
 
         // every k milliseconds, we draw the contents of the video to the canvas and run the detector.
-        const timer = setInterval(detectSymbols, 250);
+        const timer = setInterval(detectSymbols, 10);
 
       }).catch((e) => {
         throw e;
@@ -110,9 +108,9 @@ export class ScanPageComponent {
         ctxLocal.stroke();
       }
 
-// render the string contained in the barcode as text on the canvas
+      // render the string contained in the barcode as text on the canvas
       function renderData(ctxLocal, data, x, y): void {
-        ctxLocal.font = '15px Arial';
+        ctxLocal.font = '20px Arial';
         ctxLocal.fillStyle = 'red';
         ctxLocal.fillText(data, x, y);
       }
@@ -120,18 +118,26 @@ export class ScanPageComponent {
       // set the function that should be called whenever a barcode is detected
       Module.processResult = (symbol, data, polygon) => {
 
-        console.log( symbol + ' found: ' + data);
-
+        const message = this.qrCodeFound(symbol, data);
 
         // draw the bounding polygon
         drawPoly(ctx, polygon);
 
         // render the data at the first coordinate of the polygon
-        renderData(ctx, data, polygon[0], polygon[1] - 10);
+        renderData(ctx, message, polygon[0], polygon[1] - 10);
+
       };
 
     };
 
+
+  }
+
+  qrCodeFound(symbol: string, data: string): string {
+
+    console.log(symbol + ' found: ' + data);
+
+    return 'Lagerblachen';
 
   }
 
