@@ -34,8 +34,8 @@ export class ScanPageComponent {
       const ctxTransp = canvasTransp.getContext('2d');
 
       const ctx = canvas.getContext('2d');
-      const desiredWidth = 420;
-      const desiredHeight = 420;
+      const desiredWidth = 320;
+      const desiredHeight = 320;
 
       const logs = this.logs;
 
@@ -75,7 +75,7 @@ export class ScanPageComponent {
         canvasTransp.height = actualSettings.height;
 
         // every k milliseconds, we draw the contents of the video to the canvas and run the detector.
-        const timer = setInterval(detectSymbols, 100);
+        const timer = setInterval(detectSymbols, 50);
 
       }).catch((e) => {
         throw e;
@@ -130,7 +130,7 @@ export class ScanPageComponent {
         ctxLocal.beginPath();
         ctxLocal.moveTo(poly[0], poly[1]);
         for (let item = 2; item < poly.length - 1; item += 2) {
-          ctxLocal.lineTo(poly[item ], poly[item + 1]);
+          ctxLocal.lineTo(poly[item], poly[item + 1]);
         }
 
         ctxLocal.lineWidth = 5;
