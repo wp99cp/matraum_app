@@ -1,39 +1,62 @@
 .page-container
   display: grid
-  place-items: center
   height: 100%
+  grid-template-rows: 100px auto 175px
+
+h1
+  width: 100%
+  text-align: center
+  line-height: 100px
+  margin: 0
 
 .material-list
-  display: grid
-  height: 200px
   overflow-y: scroll
+  width: 80%
+  margin: 0 auto
 
-  span
+  td, tr
     text-align: center
-    padding: 16px
-    background-color: lightgray
+    background-color: #e8ebef
     margin: 2.5px
-    width: 250px
+    height: 25px
+    line-height: 25px
+
+  td:last-child, th:last-child
+    text-align: left
+    padding-left: 5px
 
 .actions
   display: grid
-  grid-template: "back take-back" "scann scann"
-  grid-template-columns: 50% 50%
   width: 80%
+  margin: 0 auto
+  display: grid
+  grid-template: "back scann" "zurück zurück"
+  grid-template-columns: 50% 50%
+  height: 130px
 
   span
     text-align: center
-    padding: 16px
-    background-color: lightgreen
-    margin: 2.5px
+    padding: 20px
+    color: #000000
+    border-radius: 5px
+    font-weight: 700
+    margin: 5px
 
   #back-action
-    grid-area: back
+    background-color: #c5c5c2
+    border: 2px solid #aeb4bd
+    padding: 10px 20px
+    grid-area: zurück
 
   #take-back-action
-    grid-area: take-back
+    background-color: #D90404
+    border: 2px solid #b30505
+    grid-area: back
 
   #scan-action
+    background-color: #c1d96a
+    border: 2px solid #a9c349
     grid-area: scann
+
 
 

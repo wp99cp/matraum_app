@@ -1,3 +1,6 @@
+\:host
+  display: grid
+
 #live, #canvasTransp
   width: 100%
   position: absolute
@@ -6,10 +9,13 @@
   display: none
 
 .frame
-  padding-top: 50px
+  margin: 50px 0
 
 .log
-  margin-top: -30px
+  margin: 25px 0
+  width: 100%
+  text-align: center
+  font-weight: 500
 
 #overlay
   position: fixed
@@ -51,14 +57,18 @@
 
 .close-scanner
   position: fixed
-  bottom: 20px
+  bottom: 50px
+  text-align: center
+  border-radius: 5px
+  font-weight: 700
   width: 100%
   display: grid
-  place-items: center
 
   span
-    margin: 10px
-    background-color: lightgreen
-    padding: 20px 50px
     text-align: center
-    border-radius: 10px
+    border-radius: 5px
+    background-color: #c5c5c2
+    border: 2px solid #aeb4bd
+    width: 80%
+    padding: 10px 20px
+    margin: 0 auto

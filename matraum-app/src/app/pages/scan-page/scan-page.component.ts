@@ -27,7 +27,7 @@ export class ScanPageComponent {
     this.action = this.router.url.split('/')[4] as 'barrow' | 'take-back';
     console.log('Action: ' + this.action);
 
-    this.logs = 'No QR-Code foud...';
+    this.logs = 'Scanne einen QR Code';
 
     // Check for updates
     setInterval(() => {

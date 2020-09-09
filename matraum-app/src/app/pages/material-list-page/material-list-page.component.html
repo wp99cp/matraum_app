@@ -1,21 +1,29 @@
 <div class="page-container">
 
-  <h1>Material {{stufenName}}</h1>
 
-  <div class="material-list">
+  <h1>Material: {{stufenName}}</h1>
 
-    <div *ngFor="let mat of materials">
-      <span> {{mat.amount}} {{mat.name}}</span>
-    </div>
+  <table class="material-list">
+
+    <tr>
+      <th>#</th>
+      <th>Material</th>
+
+    </tr>
+
+    <tr *ngFor="let mat of materials">
+      <td>{{mat.amount}}</td>
+      <td>{{mat.name}}  </td>
+    </tr>
 
 
-  </div>
+  </table>
 
   <div class="actions">
 
-    <span id="back-action" routerLink="/overview-page">Zurück</span>
-    <span id="take-back-action" routerLink="scan-page/take-back">Zurücknehmen</span>
     <span id="scan-action" routerLink="scan-page/barrow">Scannen</span>
+    <span id="take-back-action" routerLink="scan-page/take-back">Zurück</span>
+    <span id="back-action" routerLink="/overview-page">Zurück zur Übersicht</span>
 
   </div>
 

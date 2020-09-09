@@ -1,11 +1,13 @@
+
+<div class="log">
+  <span> {{logs}} </span>
+</div>
+
+
 <div class="frame">
   <video id="live" autoplay playsinline></video>
   <canvas id="canvas"></canvas>
   <canvas id="canvasTransp"></canvas>
-</div>
-
-<div class="log">
-  <span> {{logs}} </span>
 </div>
 
 <div id="overlay" *ngIf="showOverview">
@@ -30,6 +32,6 @@
 
 
 <div class="close-scanner" *ngIf="!showOverview">
-  <span routerLink="../..">Abbrechen</span>
+  <span routerLink="../.."> Scanner schliessen </span>
 </div>
 
