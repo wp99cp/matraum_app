@@ -12,6 +12,7 @@ import {environment} from '../environments/environment';
 import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFirestore, AngularFirestoreModule} from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
+import { ExternalRentalsComponent } from './pages/external-rentals/external-rentals.component';
 
 // @ts-ignore
 @NgModule({
@@ -20,7 +21,8 @@ import { AngularFireModule } from '@angular/fire';
     SignInPageComponent,
     ScanPageComponent,
     OverviewPageComponent,
-    MaterialListPageComponent
+    MaterialListPageComponent,
+    ExternalRentalsComponent
   ],
   imports: [
     BrowserModule,
