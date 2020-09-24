@@ -1,30 +1,30 @@
 <div class="page-container">
 
 
-  <h1>Material: {{stufenName}}</h1>
+    <h1>Material: {{stufenName}}</h1>
 
-  <table class="material-list">
+    <table class="material-list">
 
-    <tr>
-      <th>#</th>
-      <th>Material</th>
+        <tr>
+            <th>#</th>
+            <th>Material</th>
 
-    </tr>
+        </tr>
 
-    <tr *ngFor="let mat of materials">
-      <td>{{mat.amount}}</td>
-      <td>{{mat.name}}  </td>
-    </tr>
+        <tr *ngFor="let mat of materials">
+            <td>{{mat.amount}}</td>
+            <td>{{mat.name}} </td>
+        </tr>
 
 
-  </table>
+    </table>
 
-  <div class="actions">
+    <div class="actions">
 
-    <span id="scan-action" routerLink="scan-page/barrow">Scannen</span>
-    <span id="take-back-action" routerLink="scan-page/take-back">Zurück</span>
-    <span id="back-action" routerLink="/overview-page">Zurück zur Übersicht</span>
+        <span id="scan-action" routerLink="scan-page/barrow">Scannen</span>
+        <span id="take-back-action" routerLink="scan-page/take-back">Zurück</span>
+        <span id="back-action" routerLink="/overview-page">Zurück zur Übersicht</span>
 
-  </div>
+    </div>
 
 </div>
