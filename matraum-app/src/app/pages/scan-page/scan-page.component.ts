@@ -1,16 +1,20 @@
-import {ChangeDetectorRef, Component} from '@angular/core';
+import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
 import {Router} from '@angular/router';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {StockService} from '../../stock.service';
+import {WebcamService} from '../../webcam.service';
+import {MatDialogRef} from '@angular/material/dialog';
 
 declare var Module: any;
+
+
 
 @Component({
   selector: 'app-scan-page',
   templateUrl: './scan-page.component.html',
   styleUrls: ['./scan-page.component.sass']
 })
-export class ScanPageComponent {
+export class ScanPageComponent implements OnDestroy {
 
   public logs: string;
   title = 'matraum-app';
@@ -18,21 +22,23 @@ export class ScanPageComponent {
   public name = '';
   public description = '';
   public showOverview = false;
-  private maxCounter = 1;
+  public maxCounter = 1;
   private id = 0;
   private timer;
+  private updates;
 
   constructor(
     private router: Router,
     private ref: ChangeDetectorRef,
     private db: AngularFirestore,
-    private stockService: StockService) {
-
+    private stockService: StockService,
+    private webcamService: WebcamService,
+    public dialogRef: MatDialogRef<ScanPageComponent>) {
 
     this.logs = 'Scanne einen QR Code';
 
     // Check for updates
-    setInterval(() => {
+    this.updates = setInterval(() => {
       this.ref.markForCheck();
     }, 200);
 
@@ -45,6 +51,15 @@ export class ScanPageComponent {
       }
     });
 
+
+  }
+
+  ngOnDestroy(): boolean {
+
+    clearInterval(this.timer);
+    clearInterval(this.updates);
+
+    return true;
 
   }
 
@@ -67,20 +82,10 @@ export class ScanPageComponent {
       destroy_buffer: Module.cwrap('destroy_buffer', '', ['number']),
     };
 
-    // settings for the getUserMedia call
-    const constraints = {
-      audio: false,
-      video: {
-        // the browser will try to honor this resolution, but it may end up being lower.
-        facingMode: 'environment',
-        width: {min: 100, ideal: 320, max: 500},
-        height: {min: 100, ideal: 320, max: 500}
-      }
-    };
 
 
     // open the webcam stream
-    navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+    this.webcamService.getMediaStream().then((stream) => {
       // stream is a MediaStream object
       video.srcObject = stream;
       video.play();
@@ -205,7 +210,10 @@ export class ScanPageComponent {
         this.description = res.description;
         this.id = Number.parseInt(data, 10);
 
-      });
+      }).catch(() => {
+        this.showOverview = false;
+        return;
+    });
 
 
     const name = this.router.url.split('/')[2];
@@ -274,6 +282,12 @@ export class ScanPageComponent {
 
     });
 
+
+  }
+
+  restartSearch(): void {
+
+    this.showOverview = false;
 
   }
 

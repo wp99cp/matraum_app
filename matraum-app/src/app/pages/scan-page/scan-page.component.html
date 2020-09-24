@@ -1,20 +1,14 @@
-<h1>QR Code Scannen</h1>
-
-
 <div class="frame">
 
   <video id="live" autoplay playsinline></video>
   <canvas id="canvas"></canvas>
   <canvas id="canvasTransp"></canvas>
 
-  <div class="close-scanner">
-    <span routerLink=".."> Scanner schliessen </span>
-  </div>
-
 </div>
 
+<div id="info-frame" [ngClass]="{'hide': !showOverview}">
 
-<div id="info-frame" *ngIf="showOverview">
+  <mat-icon  id="close-qr-info" (click)="restartSearch()">close</mat-icon>
 
   <h1> {{name}} </h1>
   <h3> {{description}} </h3>
@@ -31,6 +25,7 @@
   </div>
 
 </div>
+
 
 
 

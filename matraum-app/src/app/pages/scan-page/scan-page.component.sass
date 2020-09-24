@@ -1,6 +1,16 @@
 \:host
   display: grid
 
+#close-camera, #close-qr-info
+  position: absolute
+  right: 5px
+  margin-top: 5px
+  padding: 10px
+
+#close-qr-info
+  margin-top: -260px
+  margin-right: 5px
+
 h1
   width: 100%
   text-align: center
@@ -11,6 +21,7 @@ h1
 #live, #canvasTransp
   grid-column: 1
   grid-row: 1
+  width: 100%
 
 #canvas
   display: none
@@ -28,10 +39,15 @@ h1
   font-weight: 500
 
 #info-frame
-  margin: 25px
   top: 0
   display: grid
   place-items: center
+  overflow: hidden
+  max-height: 300px
+  transition: all 0.3s ease-out
+  background-color: white
+  margin-top: -300px
+  position: relative
 
   .count
     font-size: 50px
@@ -57,6 +73,12 @@ h1
       padding: 20px 50px
       text-align: center
       border-radius: 10px
+
+.hide
+  max-height: 0px !important
+  transition: all 0s !important
+  margin-top: 0px !important
+
 
 .deactivated
   opacity: 0.6

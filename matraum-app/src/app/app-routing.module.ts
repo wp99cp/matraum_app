@@ -24,10 +24,6 @@ const routes: Routes = [
   {
     path: 'material/extern/rentals',
     component: ExternalRentalsComponent
-  },
-  {
-    path: 'material/:stufe/scan-page',
-    component: ScanPageComponent
   }
 
 ];

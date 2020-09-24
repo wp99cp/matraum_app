@@ -14,8 +14,12 @@ import {AngularFirestore, AngularFirestoreModule} from '@angular/fire/firestore'
 import { AngularFireModule } from '@angular/fire';
 import { ExternalRentalsComponent } from './pages/external-rentals/external-rentals.component';
 import {StockService} from './stock.service';
+import {WebcamService} from './webcam.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatIconModule} from "@angular/material/icon";
 
-// @ts-ignore
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,15 +32,19 @@ import {StockService} from './stock.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
     AngularFireModule.initializeApp(environment.firebaseConfig, 'Matraum App'),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    MatIconModule
   ],
   providers: [
     AngularFirestore,
     AngularFireAuth,
-    StockService
+    StockService,
+    WebcamService
   ],
   bootstrap: [AppComponent]
 })
