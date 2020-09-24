@@ -14,7 +14,6 @@ export class ScanPageComponent {
 
   public logs: string;
   title = 'matraum-app';
-  public action: 'barrow' | 'take-back';
   public counter = 1;
   public name = '';
   public description = '';
@@ -29,8 +28,6 @@ export class ScanPageComponent {
     private db: AngularFirestore,
     private stockService: StockService) {
 
-    this.action = this.router.url.split('/')[4] as 'barrow' | 'take-back';
-    console.log('Action: ' + this.action);
 
     this.logs = 'Scanne einen QR Code';
 
@@ -61,8 +58,7 @@ export class ScanPageComponent {
     const ctxTransp = canvasTransp.getContext('2d');
 
     const ctx = canvas.getContext('2d');
-    const desiredWidth = 320;
-    const desiredHeight = 320;
+
 
     // wrap all C functions using cwrap. Note that we have to provide crwap with the function signature.
     const api = {
@@ -77,8 +73,8 @@ export class ScanPageComponent {
       video: {
         // the browser will try to honor this resolution, but it may end up being lower.
         facingMode: 'environment',
-        width: {min: 100, ideal: desiredWidth, max: 500},
-        height: {min: 100, ideal: desiredWidth, max: 500}
+        width: {min: 100, ideal: 320, max: 500},
+        height: {min: 100, ideal: 320, max: 500}
       }
     };
 
@@ -213,25 +209,18 @@ export class ScanPageComponent {
 
 
     const name = this.router.url.split('/')[2];
-    this.db.doc('open_borrowings/' + name).get().subscribe(ref => {
+    this.db.doc('open_borrowings/' + name).get().subscribe(async ref => {
 
         const mats = ref.data().materials;
 
-        if (this.action !== 'barrow') {
-
-          if (mats[data] !== undefined) {
-            this.maxCounter = mats[data].amount;
-          } else {
-
-            this.counter = 0;
-            this.maxCounter = 0;
-
-          }
-
+        if (mats[data] !== undefined) {
+          this.counter = mats[data].amount;
         } else {
-          this.maxCounter = 1000;
-
+          this.counter = 0;
         }
+
+        this.maxCounter = (await this.stockService.getMaterialById(parseInt(data, 10))).stock;
+
       }
     );
 
@@ -243,8 +232,9 @@ export class ScanPageComponent {
 
   increment(): void {
 
-    if (this.counter === this.maxCounter)
+    if (this.counter === this.maxCounter) {
       return;
+    }
 
     this.counter++;
 
@@ -254,75 +244,30 @@ export class ScanPageComponent {
 
     this.counter--;
 
-    if (this.counter <= 0) {
+    if (this.counter < 0) {
       this.showOverview = false;
     }
 
 
   }
 
-  remove(): void {
-
-    const name = this.router.url.split('/')[2];
-
-    this.db.doc('open_borrowings/' + name).get().subscribe(ref => {
-
-      console.log(ref.data())
-
-      const mats = ref.data().materials;
-
-      if (mats[this.id] !== undefined) {
-        mats[this.id].amount = mats[this.id].amount - this.counter;
-
-        if (mats[this.id].amount === 0) {
-          delete mats[this.id];
-        }
-
-      }
-
-      console.log(mats)
-
-      this.db.doc('open_borrowings/' + name).update({
-
-        materials: mats
-
-      });
-
-      this.showOverview = false;
-
-    });
-
-
-  }
-
   add(): void {
 
-    this.maxCounter = 1000;
-
     const name = this.router.url.split('/')[2];
-
-    console.log(name)
 
     this.db.doc('open_borrowings/' + name).get().subscribe(ref => {
 
-      console.log(ref.data())
-
       const mats = ref.data().materials;
+      mats[this.id] = {
+        amount: this.counter
+      };
 
-      if (mats[this.id] === undefined)
-        mats[this.id] = {
-          amount: this.counter
-        };
-      else {
-        mats[this.id].amount = mats[this.id].amount + this.counter;
+      if (this.counter === 0) {
+        delete mats[this.id];
       }
 
-      console.log(mats)
-
       this.db.doc('open_borrowings/' + name).update({
-
         materials: mats
-
       });
 
       this.showOverview = false;

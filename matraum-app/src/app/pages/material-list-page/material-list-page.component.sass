@@ -12,7 +12,8 @@ h1
 .material-list
   overflow-y: scroll
   width: 80%
-  margin: 0 auto
+  margin: 0 auto 20px auto
+  display: block
 
   td, tr
     text-align: center
@@ -20,18 +21,23 @@ h1
     margin: 2.5px
     height: 25px
     line-height: 25px
+    width: 100%
+
+    .amount
+      padding: 0 10px
+      width: 0
 
   td:last-child, th:last-child
     text-align: left
     padding-left: 5px
+    width: 100%
 
 .actions
   display: grid
   width: 80%
   margin: 0 auto
   display: grid
-  grid-template: "back scann" "zurück zurück"
-  grid-template-columns: 50% 50%
+  grid-template: "scann" "zurück"
   height: 130px
 
   span
@@ -49,11 +55,6 @@ h1
     grid-area: zurück
     color: white
 
-
-  #take-back-action
-    background-color: #c5c5c2
-    border: 2px solid #aeb4bd
-    grid-area: back
 
   #scan-action
     background-color: #b1d62cad

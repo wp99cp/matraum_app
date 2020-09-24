@@ -1,16 +1,20 @@
-
-<div class="log">
-  <span> {{logs}} </span>
-</div>
+<h1>QR Code Scannen</h1>
 
 
 <div class="frame">
+
   <video id="live" autoplay playsinline></video>
   <canvas id="canvas"></canvas>
   <canvas id="canvasTransp"></canvas>
+
+  <div class="close-scanner">
+    <span routerLink=".."> Scanner schliessen </span>
+  </div>
+
 </div>
 
-<div id="overlay" *ngIf="showOverview">
+
+<div id="info-frame" *ngIf="showOverview">
 
   <h1> {{name}} </h1>
   <h3> {{description}} </h3>
@@ -23,15 +27,11 @@
   </div>
 
   <div class="action">
-    <span *ngIf="action === 'barrow'" (click)="add()">Ausleihen</span>
-    <span *ngIf="action !== 'barrow'" (click)="remove()">Zurückbuchen</span>
-
+    <span (click)="add()">Buchen</span>
   </div>
 
 </div>
 
 
-<div class="close-scanner" *ngIf="!showOverview">
-  <span routerLink="../.."> Scanner schliessen </span>
-</div>
+
 

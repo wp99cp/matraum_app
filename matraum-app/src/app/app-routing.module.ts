@@ -3,7 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {SignInPageComponent} from './pages/sign-in-page/sign-in-page.component';
 import {OverviewPageComponent} from './pages/overview-page/overview-page.component';
 import {MaterialListPageComponent} from './pages/material-list-page/material-list-page.component';
-import {ScanPageComponent} from "./pages/scan-page/scan-page.component";
+import {ScanPageComponent} from './pages/scan-page/scan-page.component';
 import { ExternalRentalsComponent } from './pages/external-rentals/external-rentals.component';
 
 const routes: Routes = [
@@ -26,7 +26,7 @@ const routes: Routes = [
     component: ExternalRentalsComponent
   },
   {
-    path: 'material/:stufe/scan-page/:action',
+    path: 'material/:stufe/scan-page',
     component: ScanPageComponent
   }
 
