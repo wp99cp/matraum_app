@@ -13,6 +13,7 @@ import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFirestore, AngularFirestoreModule} from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { ExternalRentalsComponent } from './pages/external-rentals/external-rentals.component';
+import {StockService} from './stock.service';
 
 // @ts-ignore
 @NgModule({
@@ -28,13 +29,14 @@ import { ExternalRentalsComponent } from './pages/external-rentals/external-rent
     BrowserModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    AngularFireModule.initializeApp(environment.firebaseConfig, 'eMeal - Menuplanung'),
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'Matraum App'),
     AngularFirestoreModule,
     AngularFireAuthModule,
   ],
   providers: [
     AngularFirestore,
-    AngularFireAuth
+    AngularFireAuth,
+    StockService
   ],
   bootstrap: [AppComponent]
 })

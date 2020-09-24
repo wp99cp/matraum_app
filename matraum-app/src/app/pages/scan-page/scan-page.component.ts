@@ -1,6 +1,7 @@
 import {ChangeDetectorRef, Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {AngularFirestore} from '@angular/fire/firestore';
+import {StockService} from '../../stock.service';
 
 declare var Module: any;
 
@@ -22,7 +23,11 @@ export class ScanPageComponent {
   private id = 0;
   private timer;
 
-  constructor(private router: Router, private ref: ChangeDetectorRef, private db: AngularFirestore) {
+  constructor(
+    private router: Router,
+    private ref: ChangeDetectorRef,
+    private db: AngularFirestore,
+    private stockService: StockService) {
 
     this.action = this.router.url.split('/')[4] as 'barrow' | 'take-back';
     console.log('Action: ' + this.action);
@@ -72,8 +77,8 @@ export class ScanPageComponent {
       video: {
         // the browser will try to honor this resolution, but it may end up being lower.
         facingMode: 'environment',
-        width: { min: 100, ideal: desiredWidth, max: 500 },
-        height: { min: 100, ideal: desiredWidth, max: 500 }
+        width: {min: 100, ideal: desiredWidth, max: 500},
+        height: {min: 100, ideal: desiredWidth, max: 500}
       }
     };
 
@@ -197,13 +202,12 @@ export class ScanPageComponent {
     this.name = '';
     this.description = '';
 
-    this.db.doc('stock/' + data).get()
-      .subscribe(ref => {
-        this.name = ref.data().material;
-        this.description = ref.data().description;
+    this.stockService.getMaterialById(Number.parseInt(data, 10))
+      .then(res => {
 
-        this.id = parseInt(data);
-
+        this.name = res.material;
+        this.description = res.description;
+        this.id = Number.parseInt(data, 10);
 
       });
 
