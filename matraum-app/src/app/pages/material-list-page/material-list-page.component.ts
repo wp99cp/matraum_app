@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AngularFirestore} from '@angular/fire/firestore';
-import {StockService} from '../../stock.service';
+import {Material, StockService} from '../../stock.service';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {first} from 'rxjs/operators';
 import {ScanPageComponent} from '../scan-page/scan-page.component';
 import {MatDialog} from "@angular/material/dialog";
+import {DetailsComponent} from "../details/details.component";
 
 
 @Component({
@@ -66,7 +67,9 @@ export class MaterialListPageComponent implements OnInit {
         this.stockService.getMaterialById(parseInt(id, 10)).then(ref2 => {
           this.materials.push({
             name: ref2.material,
-            amount: data.materials[id].amount
+            amount: data.materials[id].amount,
+            notes: data.materials[id].notes ? data.materials[id].notes : '',
+            id
           });
           console.log(this.materials);
         });
@@ -90,4 +93,15 @@ export class MaterialListPageComponent implements OnInit {
   }
 
 
+  public async openDetails(mat: any): Promise<void> {
+
+    await this.dialog.open(DetailsComponent, {
+      maxWidth: 'calc(100% - 10px)',
+      position: {bottom: '10px'},
+      data: {material: mat, amount: mat.amount}
+    }).afterClosed()
+      .pipe(first())
+      .toPromise();
+
+  }
 }
