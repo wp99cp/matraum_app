@@ -1,6 +1,6 @@
 {
   "name": "matraum-app",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --ssl --host 192.168.2.23 --ssl-key .certificates\\\\localhost.key  --ssl-cert certificates\\localhost.crt\"",
