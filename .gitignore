@@ -7,3 +7,6 @@
 .settings/
 *.sublime-workspace
 .idea/workspace.xml
+matraum-app/certificates/localhost.key
+matraum-app/certificates/localhost.crt
+matraum-app/certificates/certificate.cnf
