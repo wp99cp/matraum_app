@@ -11,6 +11,8 @@ import {Router} from '@angular/router';
 })
 export class DetailsComponent implements OnInit, OnDestroy {
 
+  private removed = false;
+
   constructor(
     private router: Router,
     @Inject(MAT_DIALOG_DATA) public data: { material: any, amount: number },
@@ -25,9 +27,33 @@ export class DetailsComponent implements OnInit, OnDestroy {
 
     const name = this.router.url.split('/')[2];
 
+    if (this.removed) {
+      return;
+    }
+
     await this.db.doc('open_borrowings/' + name).update({
-      [`materials.${this.data.material.id}.notes`]: (document.getElementById('notiz')as HTMLInputElement ).value
+      [`materials.${this.data.material.id}.notes`]: (document.getElementById('notiz') as HTMLInputElement).value
     });
+
+  }
+
+  public async removeEntry(): Promise<void> {
+
+    this.removed = true;
+
+    const name = this.router.url.split('/')[2];
+
+    this.db.doc('open_borrowings/' + name).get().subscribe(ref => {
+
+      const mats = ref.data().materials;
+      delete mats[this.data.material.id];
+
+      this.db.doc('open_borrowings/' + name).update({
+        materials: mats
+      });
+
+    });
+
 
   }
 
