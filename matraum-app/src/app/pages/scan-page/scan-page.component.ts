@@ -83,7 +83,6 @@ export class ScanPageComponent implements OnDestroy {
     };
 
 
-
     // open the webcam stream
     this.webcamService.getMediaStream().then((stream) => {
       // stream is a MediaStream object
@@ -211,8 +210,8 @@ export class ScanPageComponent implements OnDestroy {
         this.id = Number.parseInt(data, 10);
 
       }).catch(() => {
-        this.showOverview = false;
-        return;
+      this.showOverview = false;
+      return;
     });
 
 
@@ -250,10 +249,8 @@ export class ScanPageComponent implements OnDestroy {
 
   decrement(): void {
 
-    this.counter--;
-
-    if (this.counter < 0) {
-      this.showOverview = false;
+    if (this.counter > 0) {
+      this.counter--;
     }
 
 

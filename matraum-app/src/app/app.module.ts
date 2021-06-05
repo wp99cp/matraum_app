@@ -11,13 +11,14 @@ import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFirestore, AngularFirestoreModule} from '@angular/fire/firestore';
-import { AngularFireModule } from '@angular/fire';
-import { ExternalRentalsComponent } from './pages/external-rentals/external-rentals.component';
+import {AngularFireModule} from '@angular/fire';
+import {ExternalRentalsComponent} from './pages/external-rentals/external-rentals.component';
 import {StockService} from './stock.service';
 import {WebcamService} from './webcam.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
-import {MatIconModule} from "@angular/material/icon";
+import {MatIconModule} from '@angular/material/icon';
+import {DetailsComponent} from './pages/details/details.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import {MatIconModule} from "@angular/material/icon";
     ScanPageComponent,
     OverviewPageComponent,
     MaterialListPageComponent,
-    ExternalRentalsComponent
+    ExternalRentalsComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
