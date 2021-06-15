@@ -10,3 +10,7 @@
 matraum-app/certificates/localhost.key
 matraum-app/certificates/localhost.crt
 matraum-app/certificates/certificate.cnf
+backend/token.json
+backend/client_secret.json
+*.json
+backend/.ipynb_checkpoints/

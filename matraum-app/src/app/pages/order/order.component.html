@@ -1,0 +1,12 @@
+<div class="dialog">
+  <ng-container *ngIf="(order | async)?.data() as order">
+    <h3>Bestellung vom {{order['order_date'].toDate().toLocaleString('de-CH', {
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long',
+      hour: 'numeric',
+      minute: 'numeric'
+    })}}</h3>
+    <p [innerHTML]="order['order_message']"></p>
+  </ng-container>
+</div>

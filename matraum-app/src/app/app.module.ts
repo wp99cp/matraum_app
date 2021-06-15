@@ -19,6 +19,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatIconModule} from '@angular/material/icon';
 import {DetailsComponent} from './pages/details/details.component';
+import { OrderComponent } from './pages/order/order.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import {DetailsComponent} from './pages/details/details.component';
     OverviewPageComponent,
     MaterialListPageComponent,
     ExternalRentalsComponent,
-    DetailsComponent
+    DetailsComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
