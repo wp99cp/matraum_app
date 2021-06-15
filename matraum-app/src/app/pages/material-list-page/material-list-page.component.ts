@@ -1,12 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AngularFirestore} from '@angular/fire/firestore';
-import {Material, StockService} from '../../stock.service';
+import {StockService} from '../../stock.service';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {first} from 'rxjs/operators';
 import {ScanPageComponent} from '../scan-page/scan-page.component';
 import {MatDialog} from "@angular/material/dialog";
 import {DetailsComponent} from "../details/details.component";
+import {OrderComponent} from "../order/order.component";
 
 
 @Component({
@@ -102,6 +103,19 @@ export class MaterialListPageComponent implements OnInit {
     }).afterClosed()
       .pipe(first())
       .toPromise();
+
+  }
+
+  public async showOrder(): Promise<void> {
+
+    await this.dialog.open(OrderComponent, {
+      maxWidth: 'calc(100% - 10px)',
+      position: {bottom: '10px'},
+      data: {}
+    }).afterClosed()
+      .pipe(first())
+      .toPromise();
+
 
   }
 }
