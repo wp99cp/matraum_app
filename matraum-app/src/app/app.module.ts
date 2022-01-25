@@ -9,9 +9,9 @@ import {OverviewPageComponent} from './pages/overview-page/overview-page.compone
 import {MaterialListPageComponent} from './pages/material-list-page/material-list-page.component';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
-import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/auth';
-import {AngularFirestore, AngularFirestoreModule} from '@angular/fire/firestore';
-import {AngularFireModule} from '@angular/fire';
+import {AngularFireAuth, AngularFireAuthModule} from '@angular/fire/compat/auth';
+import {AngularFirestore, AngularFirestoreModule} from '@angular/fire/compat/firestore';
+import {AngularFireModule} from '@angular/fire/compat';
 import {ExternalRentalsComponent} from './pages/external-rentals/external-rentals.component';
 import {StockService} from './stock.service';
 import {WebcamService} from './webcam.service';

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {AngularFirestore} from '@angular/fire/firestore';
+import {AngularFirestore} from '@angular/fire/compat/firestore';
 import {StockService} from '../../stock.service';
-import {AngularFireAuth} from '@angular/fire/auth';
+import {AngularFireAuth} from '@angular/fire/compat/auth';
 import {first} from 'rxjs/operators';
 import {ScanPageComponent} from '../scan-page/scan-page.component';
 import {MatDialog} from "@angular/material/dialog";
