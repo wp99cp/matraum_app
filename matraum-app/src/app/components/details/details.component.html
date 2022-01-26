@@ -5,7 +5,9 @@
   <h4>Beschreibung / Notiz</h4>
   <input id="notiz" type="text" [value]=data.material.notes>
 
-  <span (click)="ngOnDestroy()" mat-dialog-close class="save-button">Speichern</span>
-  <span (click)="removeEntry()" mat-dialog-close class="back-action">Material löschen</span>
+  <app-button-list>
+    <app-button (click)="ngOnDestroy()" [mat-dialog-close]="">Speichern</app-button>
+    <app-button (click)="removeEntry()" [mat-dialog-close]="" color="red">Material löschen</app-button>
+  </app-button-list>
 
 </div>
