@@ -5,9 +5,9 @@ import {StockService} from '../../services/stock.service';
 import {AngularFireAuth} from '@angular/fire/compat/auth';
 import {first} from 'rxjs/operators';
 import {ScannerComponent} from '../../components/scanner/scanner.component';
-import {MatDialog} from "@angular/material/dialog";
-import {DetailsComponent} from "../../components/details/details.component";
-import {OrderComponent} from "../../components/order/order.component";
+import {MatDialog} from '@angular/material/dialog';
+import {DetailsComponent} from '../../components/details/details.component';
+import {OrderComponent} from '../../components/order/order.component';
 
 
 @Component({

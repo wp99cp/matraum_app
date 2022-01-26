@@ -1,0 +1,17 @@
+<h2>Spatzen</h2>
+<app-button-list>
+  <app-button *ngFor="let spatz of(spatzenService.getSpatzen() | async)"
+              routerLink="{{spatz.uuid}}"
+              color="{{spatz.isBroken ? 'red' : ''}}">
+    {{spatz.name}}
+  </app-button>
+  <app-button color="blue" (click)="spatzenService.addSpatz()">Neuer Spatz</app-button>
+</app-button-list>
+
+<h2>Einstellungen</h2>
+<app-button-list>
+  <app-button routerLink="einstellungen" color="blue">Einstellungen</app-button>
+  <app-button routerLink=".." color="red">Zurück</app-button>
+</app-button-list>
+
+
