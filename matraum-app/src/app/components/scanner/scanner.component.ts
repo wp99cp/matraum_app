@@ -92,10 +92,10 @@ export class ScannerComponent implements OnDestroy {
       const track = stream.getVideoTracks()[0];
       const actualSettings = track.getSettings();
 
-        track.applyConstraints({
-          // @ts-ignore
-          advanced: [{torch: true, fillLightMode: 'torch'}]
-        });
+      track.applyConstraints({
+        // @ts-ignore
+        advanced: [{torch: true, fillLightMode: 'torch'}]
+      });
 
       canvas.width = actualSettings.width;
       canvas.height = actualSettings.height;
@@ -210,6 +210,11 @@ export class ScannerComponent implements OnDestroy {
     this.stockService.getMaterialById(Number.parseInt(data, 10))
       .then(res => {
 
+        if (!res) {
+          this.showOverview = false;
+          return;
+        }
+
         this.name = res.material;
         this.description = res.description;
         this.id = Number.parseInt(data, 10);
@@ -231,7 +236,7 @@ export class ScannerComponent implements OnDestroy {
           this.counter = 0;
         }
 
-        this.maxCounter = (await this.stockService.getMaterialById(parseInt(data, 10))).stock;
+        this.maxCounter = (await this.stockService.getMaterialById(parseInt(data, 10)))?.stock;
 
       }
     );

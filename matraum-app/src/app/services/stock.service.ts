@@ -25,7 +25,7 @@ export class StockService {
     // Check if Id exists
     const material = this.stock.materials[id];
     if (material === undefined) {
-      throw new Error('ID do not exist!');
+      return undefined;
     }
 
     return material;

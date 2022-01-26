@@ -57,7 +57,7 @@ export class MaterialListPageComponent implements OnInit {
     // await authentication
     await this.auth.authState.pipe(first()).toPromise();
 
-    this.db.doc('open_borrowings/' + this.name).snapshotChanges().subscribe(ref => {
+    this.db.doc('open_borrowings/' + this.name).snapshotChanges().subscribe(async ref => {
 
       this.materials = [];
 
@@ -65,15 +65,18 @@ export class MaterialListPageComponent implements OnInit {
 
       for (const id in data.materials) {
 
-        this.stockService.getMaterialById(parseInt(id, 10)).then(ref2 => {
-          this.materials.push({
-            name: ref2.material,
-            amount: data.materials[id].amount,
-            notes: data.materials[id].notes ? data.materials[id].notes : '',
-            id
-          });
-          console.log(this.materials);
+        if (!id) {
+          continue;
+        }
+
+        const material = await this.stockService.getMaterialById(parseInt(id, 10));
+        this.materials.push({
+          name: material.material,
+          amount: data.materials[id].amount,
+          notes: data.materials[id].notes ? data.materials[id].notes : '',
+          id
         });
+        console.log(this.materials);
       }
 
     });
