@@ -1,19 +1,19 @@
 <h1>Materiallisten</h1>
 
 <h2>Stufen</h2>
-<nav class="overview-list">
-  <span routerLink="/material/sinai">Sinai</span>
-  <span routerLink="/material/nameless">Nameless</span>
-  <span routerLink="/material/esperia">Esperia</span>
-  <span routerLink="/material/amos">Amos</span>
-  <span routerLink="/material/froeschli">Fröschli</span>
-</nav>
+<app-button-list>
+  <app-button routerLink="/material/sinai">Sinai</app-button>
+  <app-button routerLink="/material/nameless">Nameless</app-button>
+  <app-button routerLink="/material/esperia">Esperia</app-button>
+  <app-button routerLink="/material/amos">Amos</app-button>
+  <app-button routerLink="/material/froeschli">Fröschli</app-button>
+</app-button-list>
 
 <h2>Weiteres Material</h2>
-<nav class="overview-list">
-  <span routerLink="/material/nameless">Lager</span>
-  <span routerLink="/material/sinai">Spatzen</span>
-</nav>
+<app-button-list>
+  <app-button routerLink="/material/extern/rentals">Lager</app-button>
+  <app-button routerLink="/spatzen">Spatzen</app-button>
+</app-button-list>
 
-<button class="sign-out-button" (click)="signOut()">Abmelden</button>
+<app-button color="red" (click)="signOut()">Abmelden</app-button>
 

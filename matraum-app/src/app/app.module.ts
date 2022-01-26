@@ -27,6 +27,8 @@ import {OrderComponent} from './components/order/order.component';
 import {USE_EMULATOR as USE_FUNCTIONS_EMULATOR} from '@angular/fire/compat/functions';
 import {GoogleSignInButtonComponent} from './components/google-sign-in-button/google-sign-in-button.component';
 import {BackgroundComponent} from './components/background/background.component';
+import { ButtonComponent } from './components/button/button.component';
+import { ButtonListComponent } from './components/button-list/button-list.component';
 
 
 @NgModule({
@@ -51,6 +53,8 @@ import {BackgroundComponent} from './components/background/background.component'
     OrderComponent,
     GoogleSignInButtonComponent,
     BackgroundComponent,
+    ButtonComponent,
+    ButtonListComponent,
   ],
   imports: [
     BrowserModule,

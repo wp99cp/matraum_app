@@ -35,7 +35,14 @@ const routes: Routes = [
     component: ExternalRentalsPageComponent,
     canActivate: [AngularFireAuthGuard],
     data: {authGuardPipe: redirectUnauthorizedToLogin}
+  },
+  {
+    path: 'spatzen',
+    loadChildren: () => import('./modules/spatzen/spatzen.module').then(m => m.SpatzenModule),
+    canActivate: [AngularFireAuthGuard],
+    data: {authGuardPipe: redirectUnauthorizedToLogin}
   }
+
 
 ];
 
