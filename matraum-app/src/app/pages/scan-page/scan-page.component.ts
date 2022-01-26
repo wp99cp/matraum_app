@@ -92,6 +92,12 @@ export class ScanPageComponent implements OnDestroy {
       // tell the canvas which resolution we ended up getting from the webcam
       const track = stream.getVideoTracks()[0];
       const actualSettings = track.getSettings();
+
+      track.applyConstraints({
+        // @ts-ignore
+        advanced: [{torch: true, fillLightMode: 'torch'}]
+      });
+      
       canvas.width = actualSettings.width;
       canvas.height = actualSettings.height;
 
