@@ -3,8 +3,10 @@ import {RouterModule, Routes} from '@angular/router';
 import {SignInPageComponent} from './pages/sign-in-page/sign-in-page.component';
 import {OverviewPageComponent} from './pages/overview-page/overview-page.component';
 import {MaterialListPageComponent} from './pages/material-list-page/material-list-page.component';
-import {ScanPageComponent} from './pages/scan-page/scan-page.component';
-import { ExternalRentalsComponent } from './pages/external-rentals/external-rentals.component';
+import {ExternalRentalsComponent} from './pages/external-rentals/external-rentals.component';
+import {AngularFireAuthGuard, redirectUnauthorizedTo} from '@angular/fire/compat/auth-guard';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['/']);
 
 const routes: Routes = [
 
@@ -15,15 +17,21 @@ const routes: Routes = [
   },
   {
     path: 'overview-page',
-    component: OverviewPageComponent
+    component: OverviewPageComponent,
+    canActivate: [AngularFireAuthGuard],
+    data: {authGuardPipe: redirectUnauthorizedToLogin}
   },
   {
     path: 'material/:stufe',
-    component: MaterialListPageComponent
+    component: MaterialListPageComponent,
+    canActivate: [AngularFireAuthGuard],
+    data: {authGuardPipe: redirectUnauthorizedToLogin}
   },
   {
     path: 'material/extern/rentals',
-    component: ExternalRentalsComponent
+    component: ExternalRentalsComponent,
+    canActivate: [AngularFireAuthGuard],
+    data: {authGuardPipe: redirectUnauthorizedToLogin}
   }
 
 ];
