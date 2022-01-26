@@ -1,6 +1,6 @@
 import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
 import {Router} from '@angular/router';
-import {AngularFirestore} from '@angular/fire/firestore';
+import {AngularFirestore} from '@angular/fire/compat/firestore';
 import {StockService} from '../../stock.service';
 import {WebcamService} from '../../webcam.service';
 import {MatDialogRef} from '@angular/material/dialog';
@@ -218,7 +218,7 @@ export class ScanPageComponent implements OnDestroy {
     const name = this.router.url.split('/')[2];
     this.db.doc('open_borrowings/' + name).get().subscribe(async ref => {
 
-        const mats = ref.data().materials;
+        const mats = (ref.data() as any).materials;
 
         if (mats[data] !== undefined) {
           this.counter = mats[data].amount;
@@ -262,7 +262,7 @@ export class ScanPageComponent implements OnDestroy {
 
     this.db.doc('open_borrowings/' + name).get().subscribe(ref => {
 
-      const mats = ref.data().materials;
+      const mats = (ref.data() as any).materials;
       mats[this.id] = {
         amount: this.counter
       };

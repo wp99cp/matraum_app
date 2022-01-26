@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
-import {AngularFirestore} from '@angular/fire/firestore';
-import {AngularFireAuth} from '@angular/fire/auth';
+import {AngularFirestore} from '@angular/fire/compat/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -38,7 +37,7 @@ export class StockService {
     console.log('load stock from database');
 
     const stockRef = this.db.doc('sharedData/stock').get();
-    await new Promise(resolve => {
+    await new Promise<void>(resolve => {
 
       stockRef.subscribe(ref => {
 

@@ -37,7 +37,7 @@ jobs:
       - name: Build
         run: npm run build -- --prod
    
-        # saves the build data in an artifact
+        # saves the build mock_data in an artifact
       - name: Archive build
         if: success()
         uses: actions/upload-artifact@v1
@@ -57,7 +57,7 @@ jobs:
       with:
         fetch-depth: 2
    
-    # download the build data form job 1
+    # download the build mock_data form job 1
     - name: Download build
       uses: actions/download-artifact@v1
       with:

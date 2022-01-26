@@ -1,6 +1,6 @@
 import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
-import {AngularFirestore} from '@angular/fire/firestore';
+import {AngularFirestore} from '@angular/fire/compat/firestore';
 import {Router} from '@angular/router';
 
 
@@ -45,7 +45,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
 
     this.db.doc('open_borrowings/' + name).get().subscribe(ref => {
 
-      const mats = ref.data().materials;
+      const mats = (ref.data() as any).materials;
       delete mats[this.data.material.id];
 
       this.db.doc('open_borrowings/' + name).update({
