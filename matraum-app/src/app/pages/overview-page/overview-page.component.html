@@ -1,19 +1,19 @@
-<div class="page-container">
+<h1>Materiallisten</h1>
 
-    <h1>Materiallisten</h1>
+<h2>Stufen</h2>
+<nav class="overview-list">
+  <span routerLink="/material/sinai">Sinai</span>
+  <span routerLink="/material/nameless">Nameless</span>
+  <span routerLink="/material/esperia">Esperia</span>
+  <span routerLink="/material/amos">Amos</span>
+  <span routerLink="/material/froeschli">Fröschli</span>
+</nav>
 
-    <div class="stufen-overview">
-        <span routerLink="/material/sinai">Sinai</span>
-        <span routerLink="/material/nameless">Nameless</span>
-        <span routerLink="/material/esperia">Esperia</span>
-        <span routerLink="/material/amos">Amos</span>
-        <span routerLink="/material/froeschli">Fröschli</span>
-    </div>
+<h2>Weiteres Material</h2>
+<nav class="overview-list">
+  <span routerLink="/material/nameless">Lager</span>
+  <span routerLink="/material/sinai">Spatzen</span>
+</nav>
 
-    <div class="camp-overview">
-        <span class="camps" routerLink="/material/extern/rentals">Lager / Externe Vermietung</span>
-    </div>
+<button class="sign-out-button" (click)="signOut()">Abmelden</button>
 
-    <button class="sign-out-button" (click)="signOut()">Abmelden</button>
-
-</div>

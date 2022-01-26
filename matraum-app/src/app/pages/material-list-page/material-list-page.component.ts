@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AngularFirestore} from '@angular/fire/compat/firestore';
-import {StockService} from '../../stock.service';
+import {StockService} from '../../services/stock.service';
 import {AngularFireAuth} from '@angular/fire/compat/auth';
 import {first} from 'rxjs/operators';
-import {ScanPageComponent} from '../scan-page/scan-page.component';
+import {ScannerComponent} from '../../components/scanner/scanner.component';
 import {MatDialog} from "@angular/material/dialog";
-import {DetailsComponent} from "../details/details.component";
-import {OrderComponent} from "../order/order.component";
+import {DetailsComponent} from "../../components/details/details.component";
+import {OrderComponent} from "../../components/order/order.component";
 
 
 @Component({
@@ -82,7 +82,7 @@ export class MaterialListPageComponent implements OnInit {
 
   async openScanner(): Promise<void> {
 
-    await this.dialog.open(ScanPageComponent, {
+    await this.dialog.open(ScannerComponent, {
       maxWidth: 'calc(100% - 10px)',
       position: {bottom: '10px'},
       data: {}

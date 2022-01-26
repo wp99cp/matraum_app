@@ -1,20 +1,19 @@
 import {ChangeDetectorRef, Component, OnDestroy} from '@angular/core';
 import {Router} from '@angular/router';
 import {AngularFirestore} from '@angular/fire/compat/firestore';
-import {StockService} from '../../stock.service';
-import {WebcamService} from '../../webcam.service';
+import {StockService} from '../../services/stock.service';
+import {WebcamService} from '../../services/webcam.service';
 import {MatDialogRef} from '@angular/material/dialog';
 
 declare var Module: any;
 
 
-
 @Component({
-  selector: 'app-scan-page',
-  templateUrl: './scan-page.component.html',
-  styleUrls: ['./scan-page.component.sass']
+  selector: 'app-scanner',
+  templateUrl: './scanner.component.html',
+  styleUrls: ['./scanner.component.sass']
 })
-export class ScanPageComponent implements OnDestroy {
+export class ScannerComponent implements OnDestroy {
 
   public logs: string;
   title = 'matraum-app';
@@ -33,7 +32,7 @@ export class ScanPageComponent implements OnDestroy {
     private db: AngularFirestore,
     private stockService: StockService,
     private webcamService: WebcamService,
-    public dialogRef: MatDialogRef<ScanPageComponent>) {
+    public dialogRef: MatDialogRef<ScannerComponent>) {
 
     this.logs = 'Scanne einen QR Code';
 
@@ -93,11 +92,11 @@ export class ScanPageComponent implements OnDestroy {
       const track = stream.getVideoTracks()[0];
       const actualSettings = track.getSettings();
 
-      track.applyConstraints({
-        // @ts-ignore
-        advanced: [{torch: true, fillLightMode: 'torch'}]
-      });
-      
+        track.applyConstraints({
+          // @ts-ignore
+          advanced: [{torch: true, fillLightMode: 'torch'}]
+        });
+
       canvas.width = actualSettings.width;
       canvas.height = actualSettings.height;
 

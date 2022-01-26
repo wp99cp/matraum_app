@@ -1,6 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/compat/auth';
-import {Router} from '@angular/router';
 import firebase from 'firebase/compat/app';
 
 
@@ -9,38 +8,14 @@ import firebase from 'firebase/compat/app';
   templateUrl: './sign-in-page.component.html',
   styleUrls: ['./sign-in-page.component.sass']
 })
-export class SignInPageComponent implements OnInit {
+export class SignInPageComponent {
 
-  constructor(public fireAuth: AngularFireAuth, private router: Router) {
+  constructor(public fireAuth: AngularFireAuth) {
   }
 
-  ngOnInit(): void {
 
-    this.fireAuth.authState.subscribe(user => {
-
-      if (user === null)
-        return;
-
-      this.router.navigate(['/overview-page']);
-
-
-    });
-
-  }
-
-  signIn(): void {
-
-
-    this.fireAuth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
-    this.fireAuth.currentUser.then((user) => {
-
-      if (user !== null) {
-
-      }
-
-    });
-
-
+  async signIn(): Promise<void> {
+    await this.fireAuth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
   }
 
 }
