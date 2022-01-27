@@ -14,16 +14,17 @@ erfolgt durch Cyrill Püntener v/o JPG.
 
 _Documentation in English_
 
-Before you start please make sure to install node and npm. Then you can install all dependencies using the following
-command.
+Before you start, please make sure to install `node` and `npm`. Then you can install all dependencies using the
+following command.
 
 ```bash 
-npm install
+$ npm install
 ```
 
-Now you can start the application and the firebase emulator using. This command build and serves the angular application
-with active reloading on changes. It also launches the firebase emulator for functions, firestore, storage and auth.
+Now you can start the application and the firebase emulator using the following command. This command build and serves
+the angular application with active reloading on changes. It also launches the firebase emulator for functions,
+firestore, storage and auth. 
 
 ```bash
-npm start
+$ npm start
 ```
