@@ -9,10 +9,10 @@
     </p>
 
     <h2>Offene Probleme:</h2>
-    <div *ngFor="let criterion of criteria">
+    <div *ngFor="let criterion of criteria" class="stats">
       <div *ngIf="!spatz.getState(criterion)?.checked">
         <mat-checkbox [checked]="false" (change)="checked(criterion, $event.checked)">
-          <b>{{criterion.name}}</b> ({{criterion.description}})
+          <b>{{criterion.name}}</b><br> {{criterion.description}}
         </mat-checkbox>
         <br>
         <span>

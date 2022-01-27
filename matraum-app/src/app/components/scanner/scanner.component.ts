@@ -25,6 +25,7 @@ export class ScannerComponent implements OnDestroy {
   private id = 0;
   private timer;
   private updates;
+  private track: MediaStreamTrack;
 
   constructor(
     private router: Router,
@@ -92,6 +93,7 @@ export class ScannerComponent implements OnDestroy {
       const track = stream.getVideoTracks()[0];
       const actualSettings = track.getSettings();
 
+      this.track = track;
       track.applyConstraints({
         // @ts-ignore
         advanced: [{torch: true, fillLightMode: 'torch'}]
@@ -219,11 +221,12 @@ export class ScannerComponent implements OnDestroy {
         this.description = res.description;
         this.id = Number.parseInt(data, 10);
 
+
+
       }).catch(() => {
       this.showOverview = false;
       return;
     });
-
 
     const name = this.router.url.split('/')[2];
     this.db.doc('open_borrowings/' + name).get().subscribe(async ref => {
@@ -240,6 +243,11 @@ export class ScannerComponent implements OnDestroy {
 
       }
     );
+
+    this.track?.applyConstraints({
+      // @ts-ignore
+      advanced: [{fillLightMode: 'off'}]
+    }).catch(() => {});
 
 
     return 'Lagerblachen';
