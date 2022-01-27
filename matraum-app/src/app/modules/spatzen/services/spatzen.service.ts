@@ -23,8 +23,8 @@ export class SpatzenService {
   }
 
   public getSpatz(uuid: string): Observable<Spatz> {
-    return this.db.doc('spatzen/' + uuid).get().pipe(map(doc =>
-      new Spatz(doc.data(), this.db, doc.id)));
+    return this.db.doc('spatzen/' + uuid).snapshotChanges()
+      .pipe(map(doc => new Spatz(doc.payload.data(), this.db, doc.payload.id)));
   }
 
   public addSpatz(): void {

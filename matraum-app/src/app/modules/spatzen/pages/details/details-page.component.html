@@ -1,0 +1,34 @@
+<ng-container *ngIf="spatz | async as spatz">
+  <ng-container *ngIf="criteria | async as criteria">
+
+    <h1>{{spatz.name}}</h1>
+    <p>
+      <b>Beschreibung: </b>{{spatz.description}}
+      <br>
+      <b>Status: </b>{{spatz.checkIfBroken(criteria) ? 'Defekt' : 'OK'}}
+    </p>
+
+    <h2>Offene Probleme:</h2>
+    <div *ngFor="let criterion of criteria">
+      <div *ngIf="!spatz.getState(criterion)?.checked">
+        <mat-checkbox [checked]="false" (change)="checked(criterion, $event.checked)">
+          <b>{{criterion.name}}</b> ({{criterion.description}})
+        </mat-checkbox>
+        <br>
+        <span>
+          <i>{{spatz.getState(criterion)?.note}}</i>
+        </span>
+      </div>
+    </div>
+
+  </ng-container>
+</ng-container>
+
+<h2>Weitere Optionen</h2>
+
+<app-button-list>
+  <app-button routerLink="check">Durchchecken</app-button>
+  <app-button routerLink="settings" color="blue">Einstellungen</app-button>
+  <br>
+  <app-button color="red" routerLink="/spatzen">Zurück</app-button>
+</app-button-list>

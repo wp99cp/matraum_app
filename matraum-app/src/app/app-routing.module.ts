@@ -6,6 +6,9 @@ import {MaterialListPageComponent} from './pages/material-list-page/material-lis
 
 import {ExternalRentalsPageComponent} from './pages/external-rentals-page/external-rentals-page.component';
 import {AngularFireAuthGuard, redirectLoggedInTo, redirectUnauthorizedTo} from '@angular/fire/compat/auth-guard';
+import {
+  MaterialListSettingsPageComponent
+} from "./pages/material-list-settings-page/material-list-settings-page.component";
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['/']);
 const redirectLoggedInToItems = () => redirectLoggedInTo(['overview-page']);
@@ -27,6 +30,12 @@ const routes: Routes = [
   {
     path: 'material/:stufe',
     component: MaterialListPageComponent,
+    canActivate: [AngularFireAuthGuard],
+    data: {authGuardPipe: redirectUnauthorizedToLogin}
+  },
+  {
+    path: 'material/:stufe/settings',
+    component: MaterialListSettingsPageComponent,
     canActivate: [AngularFireAuthGuard],
     data: {authGuardPipe: redirectUnauthorizedToLogin}
   },

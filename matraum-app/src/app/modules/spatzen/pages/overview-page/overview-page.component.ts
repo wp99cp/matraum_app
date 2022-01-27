@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {SpatzenService} from '../../services/spatzen.service';
+import {Observable} from 'rxjs';
+import {Criterion} from '../../classes/criterion';
+import {CriterionService} from '../../services/criterion.service';
 
 @Component({
   selector: 'app-overview-page',
@@ -8,7 +11,12 @@ import {SpatzenService} from '../../services/spatzen.service';
 })
 export class OverviewPageComponent implements OnInit {
 
-  constructor(public spatzenService: SpatzenService) {
+  public criteria: Observable<Criterion[]>;
+
+  constructor(public spatzenService: SpatzenService, criterionService: CriterionService) {
+
+    this.criteria = criterionService.getCriteria();
+
   }
 
   ngOnInit(): void {

@@ -3,7 +3,6 @@
 
   <h1>Material: {{stufenName}}</h1>
 
-  <app-button (click)="showOrder()">Bestellung anzeigen</app-button>
 
   <table class="material-list">
 
@@ -22,6 +21,8 @@
   </table>
 
   <app-button-list>
+    <app-button (click)="showOrder()">Bestellung anzeigen</app-button>
+    <app-button routerLink="settings" color="blue">Einstellungen</app-button>
     <app-button (click)="openScanner()">Scannen</app-button>
     <app-button color="red" routerLink="/overview-page">Zurück</app-button>
   </app-button-list>

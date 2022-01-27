@@ -1,0 +1,25 @@
+<ng-container *ngIf="spatz | async as spatz">
+  <h1>{{spatz.name}}</h1>
+
+</ng-container>
+
+<div *ngIf="criteria?.length > criterionIndex && criteria[criterionIndex] as criterion">
+  <h2>{{criterion.name}}</h2>
+  <p>{{criterion.description}}</p>
+  <p><i>{{criterionIndex + 1}} von {{criteria?.length}}</i></p>
+</div>
+
+
+<ng-form [formGroup]="formControl">
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Notizen zu möglichem Schaden</mat-label>
+    <textarea matInput formControlName="notes"></textarea>
+  </mat-form-field>
+</ng-form>
+
+<app-button-list>
+  <br>
+  <app-button color="red" routerLink="..">Zur Übersicht</app-button>
+  <app-button (click)="nextCriterion(false)" color="red">Kriterium defekt</app-button>
+  <app-button (click)="nextCriterion(true)">Kriterium ist OK</app-button>
+</app-button-list>

@@ -28,6 +28,7 @@ import {USE_EMULATOR as USE_FUNCTIONS_EMULATOR} from '@angular/fire/compat/funct
 import {GoogleSignInButtonComponent} from './components/google-sign-in-button/google-sign-in-button.component';
 import {BackgroundComponent} from './components/background/background.component';
 import {ButtonModule} from './modules/button/button.module';
+import { MaterialListSettingsPageComponent } from './pages/material-list-settings-page/material-list-settings-page.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import {ButtonModule} from './modules/button/button.module';
     DetailsComponent,
     OrderComponent,
     GoogleSignInButtonComponent,
-    BackgroundComponent
+    BackgroundComponent,
+    MaterialListSettingsPageComponent
   ],
   imports: [
     BrowserModule,

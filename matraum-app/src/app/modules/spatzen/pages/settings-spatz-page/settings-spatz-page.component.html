@@ -1,0 +1,24 @@
+<h2 *ngIf="spatz | async as spatz">{{spatz.name}}</h2>
+
+<p>TODO: Check-Daten Löschen --> Status set to unknown</p>
+
+
+<ng-form [formGroup]="formControl">
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Name des Zeltes</mat-label>
+    <input matInput formControlName="name">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="full-width">
+    <mat-label>Beschreibung / Notizen</mat-label>
+    <textarea matInput formControlName="description"></textarea>
+  </mat-form-field>
+
+</ng-form>
+
+<app-button-list>
+  <app-button routerLink=".." (click)="save()">Speichern</app-button>
+  <br>
+  <app-button routerLink="/spatzen" (click)="delete()" color="red">Löschen</app-button>
+  <app-button routerLink=".." color="red">Zurück</app-button>
+</app-button-list>

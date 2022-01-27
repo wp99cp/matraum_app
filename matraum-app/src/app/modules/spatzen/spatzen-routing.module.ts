@@ -1,8 +1,11 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {OverviewPageComponent} from './pages/overview-page/overview-page.component';
-import {SettingsComponent} from './pages/settings/settings.component';
-import {DetailsComponent} from './pages/details/details.component';
+import {SettingsPageComponent} from './pages/settings/settings-page.component';
+import {DetailsPageComponent} from './pages/details/details-page.component';
+import {SettingsSpatzPageComponent} from './pages/settings-spatz-page/settings-spatz-page.component';
+import {CheckPageComponent} from './pages/check-page/check-page.component';
+import {CriterionDetailsPageComponent} from './pages/criterion-details-page/criterion-details-page.component';
 
 const routes: Routes = [
 
@@ -12,12 +15,25 @@ const routes: Routes = [
   },
   {
     path: 'einstellungen',
-    component: SettingsComponent
+    component: SettingsPageComponent
+  },
+  {
+    path: 'einstellungen/:uuid',
+    component: CriterionDetailsPageComponent
   },
   {
     path: ':uuid',
-    component: DetailsComponent
+    component: DetailsPageComponent
   },
+  {
+    path: ':uuid/settings',
+    component: SettingsSpatzPageComponent
+  },
+  {
+    path: ':uuid/check',
+    component: CheckPageComponent
+  },
+
 
 
 ];

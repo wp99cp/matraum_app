@@ -1,11 +1,13 @@
-<h2>Spatzen</h2>
+<h2>Spatzen und (Vor-)Zelte</h2>
 <app-button-list>
-  <app-button *ngFor="let spatz of(spatzenService.getSpatzen() | async)"
-              routerLink="{{spatz.uuid}}"
-              color="{{spatz.isBroken ? 'red' : ''}}">
-    {{spatz.name}}
-  </app-button>
-  <app-button color="blue" (click)="spatzenService.addSpatz()">Neuer Spatz</app-button>
+  <ng-container *ngIf="criteria | async as criteria">
+    <app-button *ngFor="let spatz of(spatzenService.getSpatzen() | async)"
+                routerLink="{{spatz.uuid}}"
+                color="{{spatz.checkIfBroken(criteria) ? 'red' : ''}}">
+      <b>{{spatz.name}}</b> (<i>{{spatz.checkIfBroken(criteria) ? 'Defekt' : 'OK'}}</i>)
+    </app-button>
+  </ng-container>
+  <app-button color="blue" (click)="spatzenService.addSpatz()">Neues Zelt</app-button>
 </app-button-list>
 
 <h2>Einstellungen</h2>
