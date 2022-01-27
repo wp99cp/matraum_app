@@ -3,7 +3,7 @@
 Die Matraum App des Cevi Züri 11 erlaubt es Material direkt über das Smartphone zu verwalten. Hierzu kann ein QR-Code
 gescannt werden und anschliessend das Material abgebucht werden.
 
-![2021-06-05_20 42 27](https://user-images.githubusercontent.com/34008738/120902074-8f564600-c63e-11eb-89b7-e2fdec14b5af.png)
+![Screenshot from 2022-01-27 11-24-43](https://user-images.githubusercontent.com/34008738/151340448-3feb344b-712b-46c0-b42e-06202712f3ee.png)
 
 ## Über dieses Projekt
 
