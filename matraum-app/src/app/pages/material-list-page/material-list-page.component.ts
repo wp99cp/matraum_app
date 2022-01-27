@@ -1,13 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {AngularFirestore} from '@angular/fire/firestore';
-import {StockService} from '../../stock.service';
-import {AngularFireAuth} from '@angular/fire/auth';
+import {AngularFirestore} from '@angular/fire/compat/firestore';
+import {StockService} from '../../services/stock.service';
+import {AngularFireAuth} from '@angular/fire/compat/auth';
 import {first} from 'rxjs/operators';
-import {ScanPageComponent} from '../scan-page/scan-page.component';
-import {MatDialog} from "@angular/material/dialog";
-import {DetailsComponent} from "../details/details.component";
-import {OrderComponent} from "../order/order.component";
+import {ScannerComponent} from '../../components/scanner/scanner.component';
+import {MatDialog} from '@angular/material/dialog';
+import {DetailsComponent} from '../../components/details/details.component';
+import {OrderComponent} from '../../components/order/order.component';
 
 
 @Component({
@@ -57,7 +57,7 @@ export class MaterialListPageComponent implements OnInit {
     // await authentication
     await this.auth.authState.pipe(first()).toPromise();
 
-    this.db.doc('open_borrowings/' + this.name).snapshotChanges().subscribe(ref => {
+    this.db.doc('open_borrowings/' + this.name).snapshotChanges().subscribe(async ref => {
 
       this.materials = [];
 
@@ -65,15 +65,18 @@ export class MaterialListPageComponent implements OnInit {
 
       for (const id in data.materials) {
 
-        this.stockService.getMaterialById(parseInt(id, 10)).then(ref2 => {
-          this.materials.push({
-            name: ref2.material,
-            amount: data.materials[id].amount,
-            notes: data.materials[id].notes ? data.materials[id].notes : '',
-            id
-          });
-          console.log(this.materials);
+        if (!id) {
+          continue;
+        }
+
+        const material = await this.stockService.getMaterialById(parseInt(id, 10));
+        this.materials.push({
+          name: material.material,
+          amount: data.materials[id].amount,
+          notes: data.materials[id].notes ? data.materials[id].notes : '',
+          id
         });
+        console.log(this.materials);
       }
 
     });
@@ -82,7 +85,7 @@ export class MaterialListPageComponent implements OnInit {
 
   async openScanner(): Promise<void> {
 
-    await this.dialog.open(ScanPageComponent, {
+    await this.dialog.open(ScannerComponent, {
       maxWidth: 'calc(100% - 10px)',
       position: {bottom: '10px'},
       data: {}

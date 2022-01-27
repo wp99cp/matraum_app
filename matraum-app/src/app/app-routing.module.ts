@@ -3,28 +3,55 @@ import {RouterModule, Routes} from '@angular/router';
 import {SignInPageComponent} from './pages/sign-in-page/sign-in-page.component';
 import {OverviewPageComponent} from './pages/overview-page/overview-page.component';
 import {MaterialListPageComponent} from './pages/material-list-page/material-list-page.component';
-import {ScanPageComponent} from './pages/scan-page/scan-page.component';
-import { ExternalRentalsComponent } from './pages/external-rentals/external-rentals.component';
+
+import {ExternalRentalsPageComponent} from './pages/external-rentals-page/external-rentals-page.component';
+import {AngularFireAuthGuard, redirectLoggedInTo, redirectUnauthorizedTo} from '@angular/fire/compat/auth-guard';
+import {
+  MaterialListSettingsPageComponent
+} from "./pages/material-list-settings-page/material-list-settings-page.component";
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['/']);
+const redirectLoggedInToItems = () => redirectLoggedInTo(['overview-page']);
 
 const routes: Routes = [
 
   {
     path: '',
-    component: SignInPageComponent
-
+    component: SignInPageComponent,
+    canActivate: [AngularFireAuthGuard],
+    data: {authGuardPipe: redirectLoggedInToItems}
   },
   {
     path: 'overview-page',
-    component: OverviewPageComponent
+    component: OverviewPageComponent,
+    canActivate: [AngularFireAuthGuard],
+    data: {authGuardPipe: redirectUnauthorizedToLogin}
   },
   {
     path: 'material/:stufe',
-    component: MaterialListPageComponent
+    component: MaterialListPageComponent,
+    canActivate: [AngularFireAuthGuard],
+    data: {authGuardPipe: redirectUnauthorizedToLogin}
+  },
+  {
+    path: 'material/:stufe/settings',
+    component: MaterialListSettingsPageComponent,
+    canActivate: [AngularFireAuthGuard],
+    data: {authGuardPipe: redirectUnauthorizedToLogin}
   },
   {
     path: 'material/extern/rentals',
-    component: ExternalRentalsComponent
+    component: ExternalRentalsPageComponent,
+    canActivate: [AngularFireAuthGuard],
+    data: {authGuardPipe: redirectUnauthorizedToLogin}
+  },
+  {
+    path: 'spatzen',
+    loadChildren: () => import('./modules/spatzen/spatzen.module').then(m => m.SpatzenModule),
+    canActivate: [AngularFireAuthGuard],
+    data: {authGuardPipe: redirectUnauthorizedToLogin}
   }
+
 
 ];
 

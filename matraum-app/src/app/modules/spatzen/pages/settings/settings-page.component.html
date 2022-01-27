@@ -1,0 +1,24 @@
+<h1>
+  Einstellungen zu den Spatzen
+</h1>
+
+
+<h2>Kriterien</h2>
+<table class="criteria-list">
+  <tr>
+    <th>Kriterium</th>
+    <th>Details</th>
+  </tr>
+
+  <tr *ngFor="let criterion of criteria | async" routerLink="{{criterion.uuid}}">
+    <td>{{criterion.name}}</td>
+    <td>{{criterion.description}}</td>
+  </tr>
+
+</table>
+
+
+<app-button-list>
+  <app-button (click)="newCriterion()">Neues Kriterium</app-button>
+  <app-button routerLink=".." color="red">Zurück</app-button>
+</app-button-list>

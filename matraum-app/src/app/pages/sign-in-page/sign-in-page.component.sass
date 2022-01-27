@@ -1,45 +1,10 @@
-.sign-in-background
-  place-items: center
-  display: grid
-  height: 100%
-  width: 100%
-
-.sign-in-background::before
-  background-image: url("../../../assets/icons/logo.svg")
-  background-repeat: no-repeat
-  background-size: 700px
-  background-position: center
-  background-blend-mode: color
-  content: ""
-  height: 100vh
-  width: 100vw
-  position: fixed
-  opacity: 0.5
-
-.button
-  margin: 0 auto
-  width: 100px
-
 .sign-in-container
   width: 100%
   display: grid
   place-content: center
-  z-index: 100
-  margin-bottom: 150px
   text-align: center
-
+  align-items: center
+  height: calc(100vh - 50px)
 
 .sign-in-button
-  display: flex
-  background-color: white
-  border: 1px solid #cecece
-  cursor: pointer
-  width: 200px
   margin: 25px auto
-
-  svg
-    height: 20px
-    margin: 5px
-
-  .button-text
-    margin: 9px

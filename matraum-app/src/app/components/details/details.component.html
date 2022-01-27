@@ -1,0 +1,13 @@
+<div class="dialog">
+  <h3>{{data.material.name}}</h3>
+  <p>Anzahl: {{data.amount}}</p>
+
+  <h4>Beschreibung / Notiz</h4>
+  <input id="notiz" type="text" [value]=data.material.notes>
+
+  <app-button-list>
+    <app-button (click)="ngOnDestroy()" [mat-dialog-close]="">Speichern</app-button>
+    <app-button (click)="removeEntry()" [mat-dialog-close]="" color="red">Material löschen</app-button>
+  </app-button-list>
+
+</div>
