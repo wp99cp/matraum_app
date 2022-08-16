@@ -48,7 +48,7 @@ import base64
 import html2text
 
 
-stufen_names = ['amos', 'sinai', 'nameless', 'fröschli', 'esperia']
+stufen_names = ['amos', 'sinai', 'nameless', 'fröschli', 'esperia', 'masada', 'enomine']
 
 for stufen_name in stufen_names:
 
