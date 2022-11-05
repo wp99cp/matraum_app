@@ -44,6 +44,12 @@ export class MaterialListPageComponent implements OnInit {
       case 'esperia':
         this.stufenName = 'Esperia';
         break;
+      case 'enomine':
+        this.stufenName = 'Enomine';
+        break;
+      case 'masada':
+        this.stufenName = 'Masada';
+        break;
       case 'nameless':
         this.stufenName = 'Nameless';
         break;
