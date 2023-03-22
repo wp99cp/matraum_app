@@ -15,7 +15,8 @@ export class SignInPageComponent {
 
 
   async signIn(): Promise<void> {
-    await this.fireAuth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
+    this.fireAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      .catch(console.error);
   }
 
 }
