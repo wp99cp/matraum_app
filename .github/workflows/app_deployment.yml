@@ -10,65 +10,18 @@ on:
 jobs:
   
   # Build the angular app
-  build:
-    
-    name: Build and Test
+  build_and_deploy_frontend:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-       working-directory: ./matraum-app
-       
     steps:
-      
-      - name: Checkout
-        uses: actions/checkout@v2
-      
-      # install Node (version should be the same as local, i.g. 14.x)
-      - name: Use Node 14.x
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v2
+      - run: npm ci && npm run build:prod
+        working-directory: frontend
+      - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          node-version: '14.x'
-        
-        # installs all npm dependecies
-      - name: Install dependencies
-        run: npm ci
-        
-        # builds the angular app (prod version)
-      - name: Build
-        run: npm run build -- --prod
-   
-        # saves the build mock_data in an artifact
-      - name: Archive build
-        if: success()
-        uses: actions/upload-artifact@v1
-        with:
-          name: deploy_dist
-          path: ./matraum-app/dist/matraum-app
-          
-  # deploy the app via FTP
-  FTP-Deploy-Action:
-    name: Deploy via FTP
-    runs-on: ubuntu-latest
-    needs: build
-    
-    steps:
-    
-    - uses: actions/checkout@v2.1.0
-      with:
-        fetch-depth: 2
-   
-    # download the build mock_data form job 1
-    - name: Download build
-      uses: actions/download-artifact@v1
-      with:
-       name: deploy_dist     
-       path: './dist'   
-              
-    # upload via ftp
-    - name: Upload ftp
-      uses: sebastianpopp/ftp-action@releases/v2
-      with:
-        host: ftp://ftp.zh11.ch
-        user: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        localDir: "dist"
+          entryPoint: ./frontend
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+          channelId: live
+          projectId: matraum-app
+        env:
+          FIREBASE_CLI_PREVIEWS: hostingchannels
