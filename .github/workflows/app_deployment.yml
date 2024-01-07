@@ -15,10 +15,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm ci && npm run build:prod
-        working-directory: frontend
+        working-directory: matraum-app
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          entryPoint: ./frontend
+          entryPoint: ./matraum-app
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
           channelId: live
